@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DGD Generator</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link href="styles/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat|Overpass"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1 class="display-3 title">Dangerous Goods Document Generator</h1>
+      <p class="lead"></p>
+      <hr class="my-2" />
+      <p>
+        Enter One Order Number at a time. Orders will automatically be
+        consolidated by location and shipment date.
+      </p>
+      <p class="lead"></p>
+    <form>
+
+        <div class="add">
+          <div class="form-group">
+            <label for=""></label>
+            <small id="helpId" class="form-text text ">Address Line 1:</small>
+            <input
+              type="text"
+              class="form-control form-control-sm address1"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder="Address Line 1"
+            />
+          </div>
+          <div class="form-group">
+            <label for=""></label>
+            <small id="helpId" class="form-text text ">Address Line 2:</small>
+            <input
+              type="text"
+              class="form-control form-control-sm address2"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder="Address Line 2"
+            />
+          </div>
+          <div class="form-group">
+            <label for=""></label>
+            <small id="helpId" class="form-text text ">City:</small>
+            <input
+              type="text"
+              class="form-control form-control-sm city"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <label for=""></label>
+            <small id="helpId" class="form-text text "
+              >State/Region/Province:</small
+            >
+            <input
+              type="text"
+              class="form-control form-control-sm region"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+          <h4>Country:</h4>
+          <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for=""></label>
+          <small id="helpId" class="form-text text ">Date:</small>
+          <input
+            type="date"
+            class="form-control form-control-sm date"
+            name=""
+            id=""
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+      
+            <div class="form-group">
+              <label for=""></label>
+              <small id="helpId" class="form-text text">PO#:</small>
+              <input
+                type="tel"
+                class="form-control form-control-sm po"
+                maxlength="8"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder="PO#"
+              />
+            </div>
+        <div class="form-group">
+          <label for=""></label>
+          <small id="helpId" class="form-text text ">Batch Number:</small>
+          <input
+            type="text"
+            class="form-control form-control-sm batch"
+            name=""
+            id=""
+            aria-describedby="helpId"
+            placeholder="Batch Number"
+          />
+          <small id="helpId" class="form-text text ">Bottles:</small>
+          <input
+            type="number"
+            maxlength="3"
+            class="form-control form-control-sm bottles"
+            name=""
+            id=""
+            aria-describedby="helpId"
+            placeholder="Number of Bottles"
+          />
+          <div class="bfh-selectbox">
+            <input type="hidden" name="selectbox3" value="">
+            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+              <span class="bfh-selectbox-option input-medium" data-option="12">Option 12</span>
+              <b class="caret"></b>
+            </a>
+            <div class="bfh-selectbox-options">
+              <input type="text" class="bfh-selectbox-filter">
+              <div role="listbox">
+              <ul role="option">
+                <li><a tabindex="-1" href="#" data-option="1">2-Methoxy-1-methylethyl acetate</a></li>
+                <li><a tabindex="-1" href="#" data-option="2">2-Methoxy-1-methylethyl acetate</a></li>
+                <li><a tabindex="-1" href="#" data-option="3">Dibutyl Ethers/a></li>
+                <li><a tabindex="-1" href="#" data-option="4"></a></li>
+                <li><a tabindex="-1" href="#" data-option="5">Option 5</a></li>
+                <li><a tabindex="-1" href="#" data-option="6">Option 6</a></li>
+                <li><a tabindex="-1" href="#" data-option="7">Option 7</a></li>
+                <li><a tabindex="-1" href="#" data-option="8">Option 8</a></li>
+                <li><a tabindex="-1" href="#" data-option="9">Option 9</a></li>
+                <li><a tabindex="-1" href="#" data-option="10">Option 10</a></li>
+                <li><a tabindex="-1" href="#" data-option="11">Option 11</a></li>
+                <li><a tabindex="-1" href="#" data-option="12">Option 12</a></li>
+                <li><a tabindex="-1" href="#" data-option="13">Option 13</a></li>
+                <li><a tabindex="-1" href="#" data-option="14">Option 14</a></li>
+                <li><a tabindex="-1" href="#" data-option="15">Option 15</a></li>
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary addBatchBtn">Add Batch</button>
+        <button type="button" class="btn btn-primary submitBtn">Submit</button>
+      </form>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="script/bootstrap-formhelpers-selectbox.js" async defer></script>
+    <script src="script/javascript.js"></script>
+  </body>
+</html>

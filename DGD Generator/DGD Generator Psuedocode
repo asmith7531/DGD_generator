@@ -1,0 +1,34 @@
+Rinchem DGD Psuedocode
+///////////////////////
+VARIABLES
+
+Input Variables
+-PO#'s
+-# of bottles 
+-box size
+-address
+
+Output Variables
+-box volumes and quantities
+-most cost efficient overpack
+-box weights
+-box dimensions
+
+LOGICAL RULES
+
+-Box size bottle rules:
+
+    4x1:  4 bottles @ 3.785 liters each
+
+    2x1:  2 bottles @ 10 liters each
+
+    4x4:  4 bottles @ 4 liters each
+
+    6x1:  6 bottles @ 1 liter each
+
+    ****2 quart sized boxes 2 bottles @ 1 liter each
+
+-Overpack rules
+XL=27 4x1 boxes
+L=18 4x1 boxes
+S=8 4x1 boxes
