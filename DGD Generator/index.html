@@ -20,7 +20,7 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-    <link href="styles/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+    <link href="styles/dist/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat|Overpass"
       rel="stylesheet"
@@ -76,7 +76,7 @@
               placeholder=""
             />
           </div>
-          <div class="form-group">
+          <div class="form-group country">
             <label for=""></label>
             <small id="helpId" class="form-text text "
               >State/Region/Province:</small
@@ -132,7 +132,7 @@
             aria-describedby="helpId"
             placeholder="Batch Number"
           />
-          <small id="helpId" class="form-text text ">Bottles:</small>
+          <small id="helpId" class="form-text text bottles">Bottles:</small>
           <input
             type="number"
             maxlength="3"
@@ -142,31 +142,31 @@
             aria-describedby="helpId"
             placeholder="Number of Bottles"
           />
-          <div class="bfh-selectbox">
+          <div class="bfh-selectbox box">
             <input type="hidden" name="selectbox3" value="">
             <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-              <span class="bfh-selectbox-option input-medium" data-option="12">Option 12</span>
+              <span class="bfh-selectbox-option input-medium" data-option="12">Box Type</span>
               <b class="caret"></b>
             </a>
             <div class="bfh-selectbox-options">
-              <input type="text" class="bfh-selectbox-filter">
-              <div role="listbox">
+              <ul role="option">
+                <li><a tabindex="-1" href="#" data-option="1">4x1</a></li>
+                <li><a tabindex="-1" href="#" data-option="2">4x4</a></li>
+                <li><a tabindex="-1" href="#" data-option="3"></li>
+              </ul>
+            </div>
+            </div>
+          <div class="bfh-selectbox hazmat">
+            <input type="hidden" name="selectbox3" value="">
+            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+              <span class="bfh-selectbox-option input-medium" data-option="12">Hazardous Material</span>
+              <b class="caret"></b>
+            </a>
+            <div class="bfh-selectbox-options">
               <ul role="option">
                 <li><a tabindex="-1" href="#" data-option="1">2-Methoxy-1-methylethyl acetate</a></li>
-                <li><a tabindex="-1" href="#" data-option="2">2-Methoxy-1-methylethyl acetate</a></li>
-                <li><a tabindex="-1" href="#" data-option="3">Dibutyl Ethers/a></li>
-                <li><a tabindex="-1" href="#" data-option="4"></a></li>
-                <li><a tabindex="-1" href="#" data-option="5">Option 5</a></li>
-                <li><a tabindex="-1" href="#" data-option="6">Option 6</a></li>
-                <li><a tabindex="-1" href="#" data-option="7">Option 7</a></li>
-                <li><a tabindex="-1" href="#" data-option="8">Option 8</a></li>
-                <li><a tabindex="-1" href="#" data-option="9">Option 9</a></li>
-                <li><a tabindex="-1" href="#" data-option="10">Option 10</a></li>
-                <li><a tabindex="-1" href="#" data-option="11">Option 11</a></li>
-                <li><a tabindex="-1" href="#" data-option="12">Option 12</a></li>
-                <li><a tabindex="-1" href="#" data-option="13">Option 13</a></li>
-                <li><a tabindex="-1" href="#" data-option="14">Option 14</a></li>
-                <li><a tabindex="-1" href="#" data-option="15">Option 15</a></li>
+                <li><a tabindex="-1" href="#" data-option="2">2-Methoxy-1-methylethyl acetate, 1-Methoxy-2-propanol</a></li>
+                <li><a tabindex="-1" href="#" data-option="3">Dibutyl Ethers</li>
               </ul>
             </div>
             </div>
@@ -193,7 +193,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-    <script src="script/bootstrap-formhelpers-selectbox.js" async defer></script>
+    <script src="styles/dist/js/bootstrap-formhelpers.js"></script>
     <script src="script/javascript.js"></script>
   </body>
 </html>
