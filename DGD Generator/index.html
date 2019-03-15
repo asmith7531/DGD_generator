@@ -25,6 +25,7 @@
       href="https://fonts.googleapis.com/css?family=Montserrat|Overpass"
       rel="stylesheet"
     />
+    
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
@@ -132,7 +133,7 @@
             aria-describedby="helpId"
             placeholder="Batch Number"
           />
-          <small id="helpId" class="form-text text bottles">Bottles:</small>
+          <small id="helpId" class="form-text text">Bottles:</small>
           <input
             type="number"
             maxlength="3"
@@ -142,46 +143,43 @@
             aria-describedby="helpId"
             placeholder="Number of Bottles"
           />
-          <div class="bfh-selectbox box">
-            <input type="hidden" name="selectbox3" value="">
-            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-              <span class="bfh-selectbox-option input-medium" data-option="12">Box Type</span>
-              <b class="caret"></b>
-            </a>
-            <div class="bfh-selectbox-options">
-              <ul role="option">
-                <li><a tabindex="-1" href="#" data-option="1">4x1</a></li>
-                <li><a tabindex="-1" href="#" data-option="2">4x4</a></li>
-                <li><a tabindex="-1" href="#" data-option="3"></li>
-              </ul>
-            </div>
-            </div>
-          <div class="bfh-selectbox hazmat">
-            <input type="hidden" name="selectbox3" value="">
-            <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
-              <span class="bfh-selectbox-option input-medium" data-option="12">Hazardous Material</span>
-              <b class="caret"></b>
-            </a>
-            <div class="bfh-selectbox-options">
-              <ul role="option">
-                <li><a tabindex="-1" href="#" data-option="1">2-Methoxy-1-methylethyl acetate</a></li>
-                <li><a tabindex="-1" href="#" data-option="2">2-Methoxy-1-methylethyl acetate, 1-Methoxy-2-propanol</a></li>
-                <li><a tabindex="-1" href="#" data-option="3">Dibutyl Ethers</li>
-              </ul>
-            </div>
-            </div>
+         
+          
+            <select class="form-control" id="boxOption">
+              <option>4x1</option>
+              <option>4x4</option>
+              <option>2x10</option>
+              <option>6x1</option>
+              <option>4x1</option>
+              <option>4x1</option>
+            </select>
+            <select class="form-control hazmat">
+              <option>2-Methoxy-1-methylethyl acetate</option>
+              <option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
+              <option>Tetramethylammonium hydroxide</option>
+              <option>Dibutyl Ethers</option>
+            </select>
+            
+            
+         
+            
           </div>
         </div>
 
         <button type="button" class="btn btn-primary addBatchBtn">Add Batch</button>
         <button type="button" class="btn btn-primary submitBtn">Submit</button>
       </form>
-    </div>
+
+     
+    </div> 
+   <div id="csv-file"></div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
+   
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -192,7 +190,10 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    
+   
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+ 
     <script src="styles/dist/js/bootstrap-formhelpers.js"></script>
     <script src="script/javascript.js"></script>
   </body>
