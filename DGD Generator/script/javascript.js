@@ -27,12 +27,12 @@ $(document).ready(function() {
     /////////need to figure out a way to add another batch to the order.//////////
     $(".addBatchBtn").click(function createNewBatch () {
       var batchNew = $(".batchForm");
-      $(".batchForm").append("<small>Batch Number:</small>").addClass("form-text text batchNumTitle");
+      $("").append("<small>Batch Number:</small>").addClass("form-text text batchNumTitle");
       $(".batchForm").append("<input></input>").addClass("form-control form-control-sm batchNum");
-      $(".batchForm").append("<small>Number of Bottles:</small>").addClass("form-text text bottlesTitle");
       $(".batchForm").append("<input></input>").addClass("form-control form-control-sm bottles");
-      $(".batchForm").append("<small>Box Size</small>").addClass("form-text text boxSize");
+      $(".batchForm").append("<small>Number of Bottles:</small>").addClass("form-text text bottlesTitle");
       $(".batchForm").append("<select><option>4x1</option><option>4x4</option><option>2x10</option><option>6x1</option></select>").addClass("form -control form-control-sm box")
+      $(".batchForm").append("<small>Box Size</small>").addClass("form-text text boxSize");
     })
 
     //submit button function and click event
@@ -112,11 +112,11 @@ $(document).ready(function() {
           fullBoxVolume = 6;
       }
 
-    console.log("In this order there are " + fullBoxes + " " + (boxOptions[box]) + " boxes at " + fullBoxVolume + " liters.");
+    console.log("In this order there are " + fullBoxes + " " + (boxOptions[box]) + " boxes at " + fullBoxVolume + " liters each.");
   }) 
   
   
-
+//plugin functions for bootstrap form helper
     +(function($) {
       "use strict";
 

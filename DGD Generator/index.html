@@ -37,33 +37,36 @@
     
     <div class="container"
       <div class="row">
-          <div class="add col-lg-4">
-            <div class="form-group">
-              <label for=""></label>
-              <small id="helpId" class="form-text text ">Date:</small>
-              <input
-                type="date"
-                class="form-control form-control-sm date"
-                name=""
-                id=""
-                aria-describedby="helpId"
-                placeholder=""
-              />
-            </div>
-
-            <div class="form-group">
-              <label for=""></label>
-              <small id="helpId" class="form-text text">PO#:</small>
-              <input
-                type="tel"
-                class="form-control form-control-sm po"
-                maxlength="8"
-                name=""
-                id=""
-                aria-describedby="helpId"
-                placeholder="PO#"
-              />
-                  </div>
+        <div class="col-lg-4 add">
+              <div class="form-group">
+                  <label for=""></label>
+                  <small id="helpId" class="form-text text ">Date:</small>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm date"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                </div>
+                <hr>
+                <div class="form-group">
+                  <label for=""></label>
+                  <small id="helpId" class="form-text text">PO#:</small>
+                  <input
+                    type="tel"
+                    class="form-control form-control-sm po"
+                    maxlength="8"
+                    name=""
+                    id=""
+                    aria-describedby="helpId"
+                    placeholder="PO#"
+                  />
+                      </div>
+        
+          <hr>
+           
 
             <div class="form-group">
               <label for=""></label>
@@ -90,7 +93,7 @@
                 placeholder="Address Line 2"
               />
             </div>
-
+            <hr>
             <div class="form-group">
               <label for=""></label>
               <small id="helpId" class="form-text text ">City:</small>
@@ -103,7 +106,7 @@
                 placeholder=""
               />
             </div>
-
+            <hr>
             <div class="form-group">
               <label for=""></label>
               <small id="helpId" class="form-text text "
@@ -118,62 +121,69 @@
                 placeholder=""
               />
             </div>
-
+            <hr>
             <h4 class="text">Country:</h4>
-            <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
+            <div class="bfh-selectbox bfh-countries text" data-country="US" data-flags="true">
             </div>
           </div>
         
+          
    
 
-          <div class="form-group batchForm col-lg-6">
-            <label for=""></label>
-            <small id="helpId" class="form-text text batchNumTitle">Batch Number:</small>
-            <input
-              type="text"
-              class="form-control form-control-sm batchNum "
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder="Batch Number"
-            />
-            <small id="helpId" class="form-text text bottlesTitle">Number of Bottles:</small>
-            <input
-              type="number"
-              maxlength="3"
-              class="form-control form-control-sm bottles"
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder="Number of Bottles"
-            />
-            <p class="boxSize text">Box Size:</p>
-            <select class="form-control" id="boxOption">
-              <option>4x1</option>
-              <option>4x4</option>
-              <option>2x10</option>
-              <option>6x1</option>
-            </select>
-            <p class="text">Hazardous Material:</p>
-            <select class="form-control hazmat">
-              <option>2-Methoxy-1-methylethyl acetate</option>
-              <option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
-              <option>Tetramethylammonium hydroxide</option>
-              <option>Dibutyl Ethers</option>
-            </select>
+          <div class="form-group batchForm ">
+            <div class="col-lg-4">
+              <label for=""></label>
+              <small id="helpId" class="form-text text batchNumTitle">Batch Number:</small>
+              <input
+                type="text"
+                class="form-control form-control-sm batchNum "
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder="Batch Number"
+              />
+           
+            
+              <small id="helpId" class="form-text text bottlesTitle">Number of Bottles:</small>
+              <input
+                type="number"
+                maxlength="3"
+                class="form-control form-control-sm bottles"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder="Number of Bottles"
+              />
+            
+            
+              <small class="boxSize text">Box Size:</small>
+              <select class="form-control" id="boxOption">
+                <option>4x1</option>
+                <option>4x4</option>
+                <option>2x10</option>
+                <option>6x1</option>
+              </select>
+            
+            
+              <small class="text">Hazardous Material:</small>
+              <select class="form-control hazmat">
+                <option>2-Methoxy-1-methylethyl acetate</option>
+                <option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
+                <option>Tetramethylammonium hydroxide</option>
+                <option>Dibutyl Ethers</option>
+              </select>
+            </div>
           </div>
-
-          <button type="button" class="btn btn-primary addBatchBtn">Add Batch</button>
-          <button type="button" class="btn btn-primary submitBtn">Submit</button>
-          <div class="col-lg-3"></div>
+      </div>
     </div>
+  
+  <div class="container">
+    <!-- <button type="button" class="btn btn-danger addBatchBtn">Add Batch</button> -->
+    <button type="button" class="btn btn-danger submitBtn">Submit</button>
+  </div>
 
+  <div class="innerHTML"></div>
 
-
-
-     
-    
-   <div id="csv-file"></div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
