@@ -1,16 +1,17 @@
 .jumbotron{
- padding: 3%;
+ padding: 2%;
   background: maroon;
-  color: white
+  color: white;
+
 }
 
 .container{
   float:left;
+  margin-left: 55px;
 }
 
 .text {
   font-size: 16px;
-  
   font-kerning: normal;
   font-family: 'Overpass', sans-serif;
   padding: 3px;
@@ -18,16 +19,16 @@
 
 .title {
   font-family: 'Montserrat', sans-serif;
-  font-size:60px;
+  font-size:30px;
   font-kerning: normal;
   color:white;
 }
 
-form{
-  background-image: url("https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjdyMf4ovjgAhXjQ98KHQp7CJUQjRx6BAgBEAU&url=http%3A%2F%2Fwww.fmslondon.co.uk%2Fproducts.php%3Fproduct%3DAir-IATA-DGN-1%25252dPart-%2528Blank-%25252d-Red-Haz-Flash-only%2529-Pack-of-100-%2528Code-SDC%2529&psig=AOvVaw31KdRY8XBjMpJdz7gTafNu&ust=1552331303136389");
+body{
+  background-image: url("dgPaper.jpg");
   background-size:cover;
   background-position: center;
-  padding:5px;
+  
 }
 
 .add{
@@ -44,4 +45,8 @@ form{
   padding:10px;
   background: ;
   margin: 1%;
+}
+
+button{
+  margin-left: 10px
 }
