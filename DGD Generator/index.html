@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-  <!--<![endif]-->
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -25,9 +20,9 @@
       href="https://fonts.googleapis.com/css?family=Montserrat|Overpass"
       rel="stylesheet"
     />
-    
     <link rel="stylesheet" href="styles/style.css" />
   </head>
+
   <body>
     <div class="jumbotron">
       <h1 class="display-3 title">Dangerous Goods Document Generator</h1>
@@ -38,77 +33,24 @@
         consolidated by location and shipment date.
       </p>
       <p class="lead"></p>
-    <form>
+      </div>
+    
+    <div class="container"
+      <div class="row">
+          <div class="add col-lg-4">
+            <div class="form-group">
+              <label for=""></label>
+              <small id="helpId" class="form-text text ">Date:</small>
+              <input
+                type="date"
+                class="form-control form-control-sm date"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder=""
+              />
+            </div>
 
-        <div class="add">
-          <div class="form-group">
-            <label for=""></label>
-            <small id="helpId" class="form-text text ">Address Line 1:</small>
-            <input
-              type="text"
-              class="form-control form-control-sm address1"
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder="Address Line 1"
-            />
-          </div>
-          <div class="form-group">
-            <label for=""></label>
-            <small id="helpId" class="form-text text ">Address Line 2:</small>
-            <input
-              type="text"
-              class="form-control form-control-sm address2"
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder="Address Line 2"
-            />
-          </div>
-          <div class="form-group">
-            <label for=""></label>
-            <small id="helpId" class="form-text text ">City:</small>
-            <input
-              type="text"
-              class="form-control form-control-sm city"
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder=""
-            />
-          </div>
-          <div class="form-group country">
-            <label for=""></label>
-            <small id="helpId" class="form-text text "
-              >State/Region/Province:</small
-            >
-            <input
-              type="text"
-              class="form-control form-control-sm region"
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder=""
-            />
-          </div>
-          <h4>Country:</h4>
-          <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for=""></label>
-          <small id="helpId" class="form-text text ">Date:</small>
-          <input
-            type="date"
-            class="form-control form-control-sm date"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder=""
-          />
-        </div>
-      
             <div class="form-group">
               <label for=""></label>
               <small id="helpId" class="form-text text">PO#:</small>
@@ -121,57 +63,116 @@
                 aria-describedby="helpId"
                 placeholder="PO#"
               />
+                  </div>
+
+            <div class="form-group">
+              <label for=""></label>
+              <small id="helpId" class="form-text text ">Address Line 1:</small>
+              <input
+                type="text"
+                class="form-control form-control-sm address1"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder="Address Line 1"
+              />
             </div>
-        <div class="form-group">
-          <label for=""></label>
-          <small id="helpId" class="form-text text ">Batch Number:</small>
-          <input
-            type="text"
-            class="form-control form-control-sm batch"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="Batch Number"
-          />
-          <small id="helpId" class="form-text text">Bottles:</small>
-          <input
-            type="number"
-            maxlength="3"
-            class="form-control form-control-sm bottles"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="Number of Bottles"
-          />
-         
-          
+
+            <div class="form-group">
+              <label for=""></label>
+              <small id="helpId" class="form-text text ">Address Line 2:</small>
+              <input
+                type="text"
+                class="form-control form-control-sm address2"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder="Address Line 2"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for=""></label>
+              <small id="helpId" class="form-text text ">City:</small>
+              <input
+                type="text"
+                class="form-control form-control-sm city"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder=""
+              />
+            </div>
+
+            <div class="form-group">
+              <label for=""></label>
+              <small id="helpId" class="form-text text "
+                >State/Region/Province:</small
+              >
+              <input
+                type="text"
+                class="form-control form-control-sm region"
+                name=""
+                id=""
+                aria-describedby="helpId"
+                placeholder=""
+              />
+            </div>
+
+            <h4 class="text">Country:</h4>
+            <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
+            </div>
+          </div>
+        
+   
+
+          <div class="form-group batchForm col-lg-6">
+            <label for=""></label>
+            <small id="helpId" class="form-text text batchNumTitle">Batch Number:</small>
+            <input
+              type="text"
+              class="form-control form-control-sm batchNum "
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder="Batch Number"
+            />
+            <small id="helpId" class="form-text text bottlesTitle">Number of Bottles:</small>
+            <input
+              type="number"
+              maxlength="3"
+              class="form-control form-control-sm bottles"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder="Number of Bottles"
+            />
+            <p class="boxSize text">Box Size:</p>
             <select class="form-control" id="boxOption">
               <option>4x1</option>
               <option>4x4</option>
               <option>2x10</option>
               <option>6x1</option>
-              <option>4x1</option>
-              <option>4x1</option>
             </select>
+            <p class="text">Hazardous Material:</p>
             <select class="form-control hazmat">
               <option>2-Methoxy-1-methylethyl acetate</option>
               <option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
               <option>Tetramethylammonium hydroxide</option>
               <option>Dibutyl Ethers</option>
             </select>
-            
-            
-         
-            
           </div>
-        </div>
 
-        <button type="button" class="btn btn-primary addBatchBtn">Add Batch</button>
-        <button type="button" class="btn btn-primary submitBtn">Submit</button>
-      </form>
+          <button type="button" class="btn btn-primary addBatchBtn">Add Batch</button>
+          <button type="button" class="btn btn-primary submitBtn">Submit</button>
+          <div class="col-lg-3"></div>
+    </div>
+
+
+
 
      
-    </div> 
+    
    <div id="csv-file"></div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
