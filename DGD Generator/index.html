@@ -29,12 +29,11 @@
       <p class="lead"></p>
       <hr class="my-2" />
       <p>
-        Enter one order number at a time. Orders are automatically
-        consolidated by location and shipment date.
+        Automates my job and makes life a lil easier
       </p>
       <p class="lead"></p>
       </div>
-    
+   <div class="container">
     <div class="container"
       <div class="row">
         <div class="col-lg-4 add">
@@ -66,8 +65,7 @@
                       </div>
         
           <hr>
-           
-
+          
             <div class="form-group">
               <label for=""></label>
               <small id="helpId" class="form-text text ">Address Line 1:</small>
@@ -123,15 +121,12 @@
             </div>
             <hr>
             <h4 class="text">Country:</h4>
-            <div class="bfh-selectbox bfh-countries text" data-country="US" data-flags="true">
+            <div class="bfh-selectbox bfh-countries text country" data-country="US" data-flags="true">
             </div>
           </div>
         
-          
-   
-
-          <div class="form-group batchForm ">
-            <div class="col-lg-4">
+          <div class="form-group batchForm col-lg-4">
+            <div class="">
               <label for=""></label>
               <small id="helpId" class="form-text text batchNumTitle">Batch Number:</small>
               <input
@@ -172,17 +167,30 @@
                 <option>Tetramethylammonium hydroxide</option>
                 <option>Dibutyl Ethers</option>
               </select>
-            </div>
-          </div>
-      </div>
+              </div>
+              </div>
+              </div>
+              <div id="output" class="container">
+                
+                  <div class="addressOutput col-lg-2">Address</div>
+                  <div class="orderOutput col-lg-2">Order
+                  </div>
+                  <div class="batchOutput col-lg-2">Batch
+                  </div>
+                  <div class="hazmatOutput col-lg-2">hazmat</div>
+                  <div class="boxSizeOutput col-lg-2">Box Size
+                  </div>
+                  <div class="numberOfBoxesOutput col-lg-2">Boxes
+                  </div>
+                
+              </div>
+              </div>
+              </div>
+              </div>
+    <div class = "container" >
+      <button type="button" class="btn btn-danger addBatchBtn">Add Batch</button>
+      <button type="button" class="btn btn-danger submitBtn">Submit</button>
     </div>
-  
-  <div class="container">
-    <!-- <button type="button" class="btn btn-danger addBatchBtn">Add Batch</button> -->
-    <button type="button" class="btn btn-danger submitBtn">Submit</button>
-  </div>
-
-  <div class="innerHTML"></div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

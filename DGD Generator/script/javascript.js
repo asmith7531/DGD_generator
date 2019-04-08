@@ -1,91 +1,133 @@
 $(document).ready(function() {
- 
+  
+  // //initializing the firebase DGD generator
+  // var config = {
+  //   apiKey: "AIzaSyCugPvV9_dRb3uOIc9hCQqnNlh2IL3Jm18",
+  //   authDomain: "dgd-database.firebaseapp.com",
+  //   databaseURL: "https://dgd-database.firebaseio.com",
+  //   projectId: "dgd-database",
+  //   storageBucket: "dgd-database.appspot.com",
+  //   messagingSenderId: "863437078907"
+  // };
+  // firebase.initializeApp(config);
 
-//user input variables
-    var po = $(".po").val();
+  // var database = firebase.database()
 
-    var address1 = $(".address1").val();
-    
-    var address2 = $(".address2").val();
+  /////////need to figure out a way to add another batch to the order.//////////
+  //create a date object
+  //inside create an object for location
+  //create object within the location object that is the batch
 
-    var city = $(".city").val();
+  //inside the batch object include attr for the remaining vars (box count, hazmat, box volume, partial boxes and box type)
+  
+  // var data = localStorage.getItem(data);
+  // //if local storage exists, set the data variable equal to it; otherwise, set it equal to the object in the code below
+  // if(data!= null || data != ""){
+  //   var data = JSON.parse(localStorage.getItem(data));
+  // }
+  // else{
+    var data = {
+      dates:{
+        date1:$(".date").val(),
+      },
 
-    var region = $(".region").val();
+      locations:{
+        location1:{
+          address1:$(".address1").val(), 
+          address2:$(".address2").val(), 
+          city: $(".city").val(), 
+          region:$(".region").val(), 
+          country:$(".country").val(),
+        }
+      },
 
-    var country = $(".country").val();
+      batches:{
+        batch1:{
+          batchNum:$(".batchNum").val(),
+          hazmat:$(".hazmat").val(),
+          bottles:$(".bottles").val(),
+          boxSize:box,
+          /////////need to figure out scope before i add these parameters
+          // fullBoxVolume:fullBoxVolume,
+          // fullBoxCount:fullBoxes,
+          
+        }
+      }
+    }
+  // }
+  //passing our data variable to local storage with the key "data" after stringifying it
+  // var dataToString = JSON.stringify(data)
+  // localStorage.setItem("data",dataToString);
 
-    var date = $(".date").val();
+  //declaring the var box to equal the box type selected index of the drop down
+  var box = document.getElementById("boxOption").selectedIndex;
+  
+  
+  console.log(data)
+  // console.log(data.locations.location1)
+  //sets box to the input from the  box type dropdown menu
+  
+  //submit button function and click event, 
+  $(".submitBtn").click(function submitForm() {
+  
+  //sets our variable "bottles" equal to the user input for the number of bottles
+  var bottles = $(".bottles").val();
+  
+  //declaring our variable that will hold the number of full boxes of this lot number, this will be reassigned later after we calculate it by dividing bottles by box type
+  let fullBoxes = 0;
+  
+  //array that contains the different box types to relate the input index to a string
+  var boxOptions = ["4x1", "4x4", "2x10", "6x1"]
+  
+  //arrays containing the possible partial box volumes for boxes, the index is in order to correspond to the number of remaining bottles (thats why [0] is an empty string)
+  var boxvolume4x1 = ["", 3.785, 7.57, 11.355, 15.14]
+  var boxvolume4x4 = ["", 4, 8, 12, 16]
+  var boxvolume2x10 = ["", 10, 20]
+  var boxvolume6x1 = ["", 1,2,3,4,5,6]
+  
+  //declares partial box value to be set after the below logic runs but I need it to be available in this scope
+  var partialBoxVol = undefined;
+  
+  //declares an arbitrary box volume variable that will be reassigned later 
+  let fullBoxVolume = 0;
+  
+  var i = 0;  //iterator var
+  
+    i++
 
-    var batch = $(".batch").val();
-
-    var bottles = $(".bottles").val();
-
-    var box = document.getElementById("boxOption").selectedIndex;
-
-    var hazmat = $(".hazmat").val();
-
-    /////////need to figure out a way to add another batch to the order.//////////
-    $(".addBatchBtn").click(function createNewBatch () {
-      var batchNew = $(".batchForm");
-      $("").append("<small>Batch Number:</small>").addClass("form-text text batchNumTitle");
-      $(".batchForm").append("<input></input>").addClass("form-control form-control-sm batchNum");
-      $(".batchForm").append("<input></input>").addClass("form-control form-control-sm bottles");
-      $(".batchForm").append("<small>Number of Bottles:</small>").addClass("form-text text bottlesTitle");
-      $(".batchForm").append("<select><option>4x1</option><option>4x4</option><option>2x10</option><option>6x1</option></select>").addClass("form -control form-control-sm box")
-      $(".batchForm").append("<small>Box Size</small>").addClass("form-text text boxSize");
-    })
-
-    //submit button function and click event
-    $(".submitBtn").click(function submitForm() {
-      var box = document.getElementById("boxOption").selectedIndex;
-      console.log(box);
-      var bottles = $(".bottles").val();
-    console.log(bottles);
-
-    let fullBoxes = 0;
-
-    //array that contains the different box types to relate the input index to a string
-    var boxOptions = ["4x1", "4x4", "2x10", "6x1"]
-
-    //arrays containing the possible partial box volumes for boxes, the index is in order to correspond to the number of remaining bottles (so [0] is an empty string)
-    var boxvolume4x1 = ["", 3.785, 7.57, 11.355, 15.14]
-    var boxvolume4x4 = ["", 4, 8, 12, 16]
-    var boxvolume2x10 = ["", 10, 20]
-    var boxvolume6x1 = ["", 1,2,3,4,5,6]
-    
-    //declares an arbitrary box volume variable
-    let fullBoxVolume = 0;
-
-    //logic that determines how many full boxes we have and how many bottles are in the remaining partial box (there is one of these conditionals for each of the different sizes of box)
+    //this is the logic that determines how many full boxes we have and how many bottles are in the remaining partial box (there is one of these conditionals that follow similar logic for each of the different sizes of box)
     if (boxOptions[box] === ("4x1"))  {
+      console.log(i);
       console.log("4x1");
-
+      //returning the box size
       //divides the total number of bottles in the order by the number of bottles per box and rounds down 
       fullBoxes = Math.floor(bottles / 4);
-
+      console.log(fullBoxes)
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 4;
-
-      //if a remainder exists this code will run
+      
+      //if a remainder exists this code will run 
       if (remainingBottles != 0)  { 
-        console.log("There is one partial box with a volume of: " + boxvolume4x1[remainingBottles] + " liters");  
+        partialBoxVol=boxvolume4x1[remainingBottles];
+        console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
       fullBoxVolume = 15.14;
+    }
+    
+    ////////////////////////////////////////////////
+    
+    else if (boxOptions[box] === ("4x4")) {
+      console.log("4x4");
+      fullBoxes = Math.floor(bottles / 4);
+      remainingBottles = bottles % 4;
+      
+      if (remainingBottles != 0)  {
+        partialBoxVol =  boxvolume4x4[remainingBottles];
+        console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
-
-      ////////////////////////////////////////////////
-
-      else if (boxOptions[box] === ("4x4")) {
-        console.log("4x4");
-        fullBoxes = Math.floor(bottles / 4);
-        remainingBottles = bottles % 4;
-
-        if (remainingBottles != 0)  {
-            console.log("There is one partial box with a volume of: " + boxvolume4x4[remainingBottles] + " liters");
-          }
-          fullBoxVolume = 16;
-      }
-
+      fullBoxVolume = 16;
+    }
+    
       ////////////////////////////////////////////////
 
       else if (boxOptions[box] === ("2x10")) {
@@ -94,7 +136,8 @@ $(document).ready(function() {
         remainingBottles = bottles % 2;
 
         if (remainingBottles != 0)  {
-            console.log("There is one partial box with a volume of: " + boxvolume2x10[remainingBottles] + " liters");
+          partialBoxVol=boxvolume2x10[remainingBottles];
+            console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
           }
           fullBoxVolume = 20;
       }
@@ -107,16 +150,19 @@ $(document).ready(function() {
         remainingBottles = bottles % 6;
 
         if (remainingBottles != 0)  {
-            console.log("There is one partial box with a volume of: " + boxvolume6x1[remainingBottles] + " liters");
+          partialBoxVol=boxvolume6x1[remainingBottles];
+            console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
           }
           fullBoxVolume = 6;
       }
-
-    console.log("In this order there are " + fullBoxes + " " + (boxOptions[box]) + " boxes at " + fullBoxVolume + " liters each.");
+      //defines new p html element
+      var newP = $("<p>")
+      
+      var numberOfBoxesOutput = newP.text(fullBoxes+" at " + fullBoxVolume + " L")
+      $(".numberOfBoxesOutput").append(numberOfBoxesOutput)
   }) 
   
-  
-//plugin functions for bootstrap form helper
+//plugin functions for bootstrap form helper, these are stupid long, later I will go back and slim them down but now I need to focus on MVP
     +(function($) {
       "use strict";
 
