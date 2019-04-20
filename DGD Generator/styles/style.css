@@ -66,3 +66,7 @@ button{
 #buttons{
   justify-self: left;
 }
+.output{
+  margin-left:8%;
+  margin-right:8%;
+}
