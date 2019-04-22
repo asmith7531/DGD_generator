@@ -4,7 +4,6 @@ $(document).ready(function() {
       dates:{
         date1:$(".date").val(),
       },
-
       locations:{
         location1:{
           address1:$(".address1").val(), 
@@ -16,9 +15,6 @@ $(document).ready(function() {
       },
     }
 
-    
-    
-    
     //submit button function and click event, 
     $(".addBatchBtn").click(function addBatch() {
       //creates an object for the current batch
@@ -126,26 +122,31 @@ $(document).ready(function() {
       }
       //defines new table row
       var newtr = $("<tr>")
+
       //function to add variable info to the table passing the variable in as a parameter
       function newHTML(text){
         //defines new html element
         var newtd = $('<td>')
-        
         newtd.text(text);
         newtr.append(newtd);
-
       }
       
-      newHTML()
+      
       newHTML()
       newHTML(batch.batchNum)
       newHTML(batch.hazmat)
-      newHTML(batch.boxSize)
+      newHTML(boxChoice)
       newHTML(fullBoxVolume)
       newHTML(fullBoxes)
       newHTML(partialBoxVol)
       $("#output").append(newtr)
   }) 
+
+  $("#overpack").click(overpack())
+    
+    function overpack(){
+      //push data to firebase before doing this. that way we can pull all the order info that we need for this 
+  }
   
 //plugin functions for bootstrap form helper, these are stupid long, later I will go back and slim them down but now I need to focus on MVP
     +(function($) {
