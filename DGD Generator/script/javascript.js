@@ -12,9 +12,10 @@ $(document).ready(function () {
   var shipment;
   $(".addNewLocationBtn").click(function addLocation() {
     shipment = new Location();
-    console.log(shipment)
+    // console.log(shipment)
   })
 
+  var i = 0;
   //creates an object for the current batch
   var Batch = function () {
     this.po = $(".po").val();
@@ -23,8 +24,7 @@ $(document).ready(function () {
     this.bottles = $(".bottles").val();
   }
   var batches = []
-  var i = 0;
-  console.log(i)
+  // console.log(i)
   //submit button function and click event, 
   $(".addBatchBtn").click(function addBatch() {
 
@@ -33,11 +33,11 @@ $(document).ready(function () {
     }
 
     i++
-    console.log(i)
+    // console.log(i)
     //creates an object for the current batch
     batches[i] = new Batch()
     shipment.batches = batches;
-    console.log(shipment)
+    // console.log(shipment)
 
     //declaring the var box to equal the box type selected index of the drop down
     let box = document.getElementById("boxOption").selectedIndex;
@@ -68,8 +68,8 @@ $(document).ready(function () {
 
     //this is the logic that determines how many full boxes we have and how many bottles are in the remaining partial box (there is one of these conditionals that follow similar logic for each of the different sizes of box)
     if (boxChoice === ("4x1")) {
-      console.log(i);
-      console.log("4x1");
+      // console.log(i);
+      // console.log("4x1");
       //returning the box size
       //divides the total number of bottles in the order by the number of bottles per box and rounds down 
       shipment.batches[i].fullBoxes = Math.floor(bottles / 4);
@@ -81,7 +81,7 @@ $(document).ready(function () {
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume4x1[remainingBottles];
         shipment.batches[i].partialBoxVol = partialBoxVol
-        console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
+        // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
       shipment.batches[i].fullBoxVolume = 15.14;
     } else if (boxChoice === ("4x4")) {
@@ -135,7 +135,30 @@ $(document).ready(function () {
     newHTML(shipment.batches[i].partialBoxVol)
     $("#output").append(newtr)
   })
-
+  //overpack dictionary 
+  var  overpack = {
+    "4x1":{
+      large:27,
+      medium:18,
+      small:8
+    },
+    "4x4":{
+      large:18,
+      medium:12,
+      small:8
+    },
+    "2x10":{
+      large:27,
+      medium:18,
+      small:8
+    },
+    "6x1":{
+      large:12
+    }
+  }///look up bracket notation to fix this
+  // console.log(overpack[shipment.batches[1].boxChoice].large)
+  ///////////////////////////////////////////////////////////////////////////////////////////////// write a function that will count the overpacks, use the dictionary to 
+  //overpack function which runs once our overpack button is clicked
   $(".overpack").click(function overpack() {
     //checks if user entered a destination
     if (shipment == undefined)
@@ -144,15 +167,40 @@ $(document).ready(function () {
     else if (shipment.batches === undefined) {
       alert("Please enter an order first!")
     } else {
+      //gets the number of batches going to this location
       var numOfBatches = shipment.batches.length - 1;
-
+      //loops to compare the batches to each other 
       for (var i = 1; i <= numOfBatches; i++) {
         for (var j = 1; j <= numOfBatches; j++) {
-          if (shipment.batches[i].hazmat === shipment.batches[i].hazmat) {
-            
+          //logic so the loop does not compare multiple times
+          if((i!=j) &&(i<j)) {
+            //checks if the hazardous material is the same and the type of box is the same
+           if((shipment.batches[i].hazmat===shipment.batches[j].hazmat)&&(shipment.batches[i].boxChoice===shipment.batches[j].boxChoice)){
+             //if they are the same the full boxes from each are added together
+            var totalBoxes = shipment.batches[i].fullBoxes + shipment.batches[j].fullBoxes
+            // console.log(totalBoxes)
+            if (shipment.batches[i].boxChoice === "4x1"){
+              
+            }
+            else if (shipment.batches[i].boxChoice === "4x4"){
+              
+            }
+            else if (shipment.batches[i].boxChoice === "2x10"){
+              
+            }
+            else if (shipment.batches[i].boxChoice === "6x1"){
+              
+            }
+           }
           }
         }
       }
+      // console.log("Large: "+overpacks.large);
+      // console.log("Medium: "+overpacks.medium);
+      // console.log("Small: "+overpacks.small);
+      // console.log("IOP: "+overpacks.iop);
     }
   })
 })
+
+
