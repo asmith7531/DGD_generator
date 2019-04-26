@@ -14,7 +14,7 @@ $(document).ready(function () {
     shipment = new Location();
     // console.log(shipment)
   })
-//iterator
+  //iterator
   var i = 0;
   //creates an object for the current batch
   var Batch = function () {
@@ -112,7 +112,7 @@ $(document).ready(function () {
       shipment.batches[i].fullBoxVolume = 6;
     }
 
-  ///////////////////////////////////////////
+    ///////////////////////////////////////////
 
     //defines new table row
     var newtr = $("<tr>")
@@ -135,39 +135,39 @@ $(document).ready(function () {
     $("#output").append(newtr)
   })
   ///////////////////////////////////////////////
- 
+
   //overpack function which runs once our overpack button is clicked
   $(".overpack").click(function overpack() {
 
     //overpack dictionary 
-    var  overpack = {}
-      overpack['4x1']={
-        large:27,
-        medium:18,
-        small:8
-      }
-      overpack['4x4']={
-        large:18,
-        medium:12,
-        small:8
-      }
-      overpack['2x10']={
-        large:18,
-        medium:12,
-        small:8
-      }
-      overpack['6x1']={
-        large:18,
-        medium:12,
-        small:8
-      }
-      //creates the new match object
-      function Match(hazmat, boxDims, fullBoxCount){
-        this.hazmat = hazmat,
+    var overpack = {}
+    overpack['4x1'] = {
+      large: 27,
+      medium: 18,
+      small: 8
+    }
+    overpack['4x4'] = {
+      large: 18,
+      medium: 12,
+      small: 8
+    }
+    overpack['2x10'] = {
+      large: 18,
+      medium: 12,
+      small: 8
+    }
+    overpack['6x1'] = {
+      large: 18,
+      medium: 12,
+      small: 8
+    }
+    //creates the new match object
+    function Match(hazmat, boxDims, fullBoxCount) {
+      this.hazmat = hazmat,
         this.boxDims = boxDims,
         this.fullBoxCount = fullBoxCount
-      };
-      var matches = [];
+    };
+    var matches = [];
     //checks if user entered a destination
     if (shipment == undefined)
       alert("Enter a Destination First!")
@@ -178,25 +178,24 @@ $(document).ready(function () {
       //gets the number of batches going to this location
       var numOfBatches = shipment.batches.length - 1;
       //loops to compare the batches to each other 
-      for (var i = 1; i <= numOfBatches; i++) {
-        for (var j = 1; j <= numOfBatches; j++) {
-          //logic so the loop does not compare multiple times
-          if((i!=j) &&(i<j)) {
-            //checks if the hazardous material is the same and the type of box is the same
-           if((shipment.batches[i].hazmat===shipment.batches[j].hazmat)&&(shipment.batches[i].boxChoice===shipment.batches[j].boxChoice)){
-             
-            
 
-             //pushes a new Match object to the matches array
-             matches.push(new Match (shipment.batches[i].hazmat),shipment.batches[i].fullBoxVolume)
-             console.log(shipment.batches[i] +" "+ shipment.batches[j] + " can be consolidated in an overpack")
-             
+      function filter(property,numOfBatches){
+        for (var i = 0; i<numOfBatches; i++){
+          for (var j = 0; j<numOfBatches; j++){
+            if((i!=j)&&(i<=j)) {
+              console.log(property)
             }
           }
         }
       }
-      console.log(matches)
-     
+      filter([shipment.batches],numOfBatches)
+        // matches.push(new Match(
+        //   shipment.batches[i].hazmat,
+        //   shipment.batches[i].boxChoice,
+        //   totalBoxes
+        // ))
+      
+      
     }
   })
 })
