@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   var Location = function () {
     this.date = $(".date").val();
-    //this.country=(".country").val(); ///// country will not give me the value need to examine why
+    //this.country=(".country").val(); ///// country will not give me the value need to figure out why
     this.address1 = $(".address1").val();
     this.address2 = $(".address2").val();
     this.city = $(".city").val();
@@ -14,7 +14,7 @@ $(document).ready(function () {
     shipment = new Location();
     // console.log(shipment)
   })
-
+//iterator
   var i = 0;
   //creates an object for the current batch
   var Batch = function () {
@@ -68,12 +68,8 @@ $(document).ready(function () {
 
     //this is the logic that determines how many full boxes we have and how many bottles are in the remaining partial box (there is one of these conditionals that follow similar logic for each of the different sizes of box)
     if (boxChoice === ("4x1")) {
-      // console.log(i);
-      // console.log("4x1");
-      //returning the box size
       //divides the total number of bottles in the order by the number of bottles per box and rounds down 
       shipment.batches[i].fullBoxes = Math.floor(bottles / 4);
-      // console.log(fullBoxes)
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 4;
 
@@ -115,6 +111,9 @@ $(document).ready(function () {
       }
       shipment.batches[i].fullBoxVolume = 6;
     }
+
+  ///////////////////////////////////////////
+
     //defines new table row
     var newtr = $("<tr>")
 
@@ -135,31 +134,40 @@ $(document).ready(function () {
     newHTML(shipment.batches[i].partialBoxVol)
     $("#output").append(newtr)
   })
-  //overpack dictionary 
-  var  overpack = {
-    "4x1":{
-      large:27,
-      medium:18,
-      small:8
-    },
-    "4x4":{
-      large:18,
-      medium:12,
-      small:8
-    },
-    "2x10":{
-      large:27,
-      medium:18,
-      small:8
-    },
-    "6x1":{
-      large:12
-    }
-  }///look up bracket notation to fix this
-  // console.log(overpack[shipment.batches[1].boxChoice].large)
-  ///////////////////////////////////////////////////////////////////////////////////////////////// write a function that will count the overpacks, use the dictionary to 
+  ///////////////////////////////////////////////
+ 
   //overpack function which runs once our overpack button is clicked
   $(".overpack").click(function overpack() {
+
+    //overpack dictionary 
+    var  overpack = {}
+      overpack['4x1']={
+        large:27,
+        medium:18,
+        small:8
+      }
+      overpack['4x4']={
+        large:18,
+        medium:12,
+        small:8
+      }
+      overpack['2x10']={
+        large:18,
+        medium:12,
+        small:8
+      }
+      overpack['6x1']={
+        large:18,
+        medium:12,
+        small:8
+      }
+      //creates the new match object
+      function Match(hazmat, boxDims, fullBoxCount){
+        this.hazmat = hazmat,
+        this.boxDims = boxDims,
+        this.fullBoxCount = fullBoxCount
+      };
+      var matches = [];
     //checks if user entered a destination
     if (shipment == undefined)
       alert("Enter a Destination First!")
@@ -176,29 +184,19 @@ $(document).ready(function () {
           if((i!=j) &&(i<j)) {
             //checks if the hazardous material is the same and the type of box is the same
            if((shipment.batches[i].hazmat===shipment.batches[j].hazmat)&&(shipment.batches[i].boxChoice===shipment.batches[j].boxChoice)){
-             //if they are the same the full boxes from each are added together
-            var totalBoxes = shipment.batches[i].fullBoxes + shipment.batches[j].fullBoxes
-            // console.log(totalBoxes)
-            if (shipment.batches[i].boxChoice === "4x1"){
-              
+             
+            
+
+             //pushes a new Match object to the matches array
+             matches.push(new Match (shipment.batches[i].hazmat),shipment.batches[i].fullBoxVolume)
+             console.log(shipment.batches[i] +" "+ shipment.batches[j] + " can be consolidated in an overpack")
+             
             }
-            else if (shipment.batches[i].boxChoice === "4x4"){
-              
-            }
-            else if (shipment.batches[i].boxChoice === "2x10"){
-              
-            }
-            else if (shipment.batches[i].boxChoice === "6x1"){
-              
-            }
-           }
           }
         }
       }
-      // console.log("Large: "+overpacks.large);
-      // console.log("Medium: "+overpacks.medium);
-      // console.log("Small: "+overpacks.small);
-      // console.log("IOP: "+overpacks.iop);
+      console.log(matches)
+     
     }
   })
 })
