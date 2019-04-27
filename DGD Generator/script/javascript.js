@@ -1,13 +1,12 @@
-$(document).ready(function () {
-
-  var Location = function () {
+$(document).ready(function () { 
+  const Location = function () {
     this.date = $(".date").val();
     //this.country=(".country").val(); ///// country will not give me the value need to figure out why
     this.address1 = $(".address1").val();
     this.address2 = $(".address2").val();
     this.city = $(".city").val();
     this.region = $(".region").val();
-
+    orders = [];
   }
   var shipment;
   $(".addNewLocationBtn").click(function addLocation() {
@@ -23,7 +22,7 @@ $(document).ready(function () {
     this.hazmat = $(".hazmat").val();
     this.bottles = $(".bottles").val();
   }
-  var batches = []
+  var orders = []
   // console.log(i)
   //submit button function and click event, 
   $(".addBatchBtn").click(function addBatch() {
@@ -35,8 +34,8 @@ $(document).ready(function () {
     i++
     // console.log(i)
     //creates an object for the current batch
-    batches[i] = new Batch()
-    shipment.batches = batches;
+    orders[i] = new Batch()
+    shipment.orders = orders;
     // console.log(shipment)
 
     //declaring the var box to equal the box type selected index of the drop down
@@ -58,59 +57,68 @@ $(document).ready(function () {
     var boxvolume6x1 = ["", 1, 2, 3, 4, 5, 6]
 
     //declares partial box value to be set after the below logic runs but I need it to be available in this scope
-    var partialBoxVol = undefined;
+    var partialBoxVol = 0;
 
     var boxChoice = boxOptions[box]
     //declares an arbitrary box volume variable that will be reassigned later 
     let fullBoxVolume = 0;
 
-    shipment.batches[i].boxChoice = boxChoice;
+    shipment.orders[i].boxChoice = boxChoice;
 
     //this is the logic that determines how many full boxes we have and how many bottles are in the remaining partial box (there is one of these conditionals that follow similar logic for each of the different sizes of box)
     if (boxChoice === ("4x1")) {
       //divides the total number of bottles in the order by the number of bottles per box and rounds down 
-      shipment.batches[i].fullBoxes = Math.floor(bottles / 4);
+      shipment.orders[i].fullBoxes = Math.floor(bottles / 4);
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 4;
 
       //if a remainder exists this code will run 
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume4x1[remainingBottles];
-        shipment.batches[i].partialBoxVol = partialBoxVol
+        shipment.orders[i].partialBoxVol = partialBoxVol
         // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
-      shipment.batches[i].fullBoxVolume = 15.14;
+      shipment.orders[i].fullBoxVolume = 15.14;
     } else if (boxChoice === ("4x4")) {
-      // console.log("4x4");
-      shipment.batches[i].fullBoxes = Math.floor(bottles / 4);
-      shipment.remainingBottles = bottles % 4;
+      //divides the total number of bottles in the order by the number of bottles per box and rounds down 
+      shipment.orders[i].fullBoxes = Math.floor(bottles / 4);
+      //sets a variable equal to the remainder
+      var remainingBottles = bottles % 4;
 
+      //if a remainder exists this code will run 
       if (remainingBottles != 0) {
-        shipment.partialBoxVol = boxvolume4x4[remainingBottles];
+        partialBoxVol = boxvolume4x4[remainingBottles];
+        shipment.orders[i].partialBoxVol = partialBoxVol
         // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
-      fullBoxVolume = 16;
+      shipment.orders[i].fullBoxVolume = 16;
     } else if (boxChoice === ("2x10")) {
-      // console.log("2x10");
-      shipment.batches[i].fullBoxes = Math.floor(bottles / 2);
-      shipment.batches[i].remainingBottles = bottles % 2;
+      //divides the total number of bottles in the order by the number of bottles per box and rounds down 
+      shipment.orders[i].fullBoxes = Math.floor(bottles / 2);
+      //sets a variable equal to the remainder
+      var remainingBottles = bottles % 2;
 
+      //if a remainder exists this code will run 
       if (remainingBottles != 0) {
-        shipment.batches[i].partialBoxVol = boxvolume2x10[remainingBottles];
+        partialBoxVol = boxvolume2x10[remainingBottles];
+        shipment.orders[i].partialBoxVol = partialBoxVol
         // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
-      shipment.batches[i].fullBoxVolume = 20;
-    } else if (boxChoice === ("6x1")) {
-      // console.log("6x1");
-      shipment.batches[i].fullBoxes = Math.floor(bottles / 6);
-      shipment.batches[i].remainingBottles = bottles % 6;
+      shipment.orders[i].fullBoxVolume = 20;
+    }  else if (boxChoice === ("6x1")) {
+      //divides the total number of bottles in the order by the number of bottles per box and rounds down 
+      shipment.orders[i].fullBoxes = Math.floor(bottles / 6);
+      //sets a variable equal to the remainder
+      var remainingBottles = bottles % 6;
 
+      //if a remainder exists this code will run 
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume6x1[remainingBottles];
+        shipment.orders[i].partialBoxVol = partialBoxVol
         // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
-      shipment.batches[i].fullBoxVolume = 6;
-    }
+      shipment.orders[i].fullBoxVolume = 6;
+    } 
 
     ///////////////////////////////////////////
 
@@ -125,22 +133,63 @@ $(document).ready(function () {
       newtr.append(newtd);
     }
 
-    newHTML(shipment.batches[i].po)
-    newHTML(shipment.batches[i].batchNum)
-    newHTML(shipment.batches[i].hazmat)
-    newHTML(shipment.batches[i].boxChoice)
-    newHTML(shipment.batches[i].fullBoxVolume)
-    newHTML(shipment.batches[i].fullBoxes)
-    newHTML(shipment.batches[i].partialBoxVol)
+    newHTML(shipment.orders[i].po)
+    newHTML(shipment.orders[i].batchNum)
+    newHTML(shipment.orders[i].hazmat)
+    newHTML(shipment.orders[i].boxChoice)
+    newHTML(shipment.orders[i].fullBoxVolume)
+    newHTML(shipment.orders[i].fullBoxes)
+    newHTML(shipment.orders[i].partialBoxVol)
     $("#output").append(newtr)
   })
   ///////////////////////////////////////////////
-
+  
   //overpack function which runs once our overpack button is clicked
   $(".overpack").click(function overpack() {
+    
+    //pushing the orders to a separate list to make them easier to work with using the Lodash library
+    const orderList = [];
+    for (var i =1; i<shipment.orders.length; i++){
+      orderList.push(shipment.orders[i])
+    }
+ 
+    //groups the orders by hazmat, box dims, batch
+    const groupsDGD = _.groupBy(orderList, function(orderList) {
+      return `${orderList.hazmat}-${orderList.fullBoxVolume}-${orderList.batchNum}`;
+    });
+    console.log(groupsDGD)
+
+    var boxTotals = {
+      '4x1':0,
+      '4x4':0,
+      '2x10':0,
+      '6x1':0
+    }
+
+    const consolidateList = _.groupBy(orderList, function(orderList) {
+      return `${orderList.boxChoice}`;
+    });
+    console.log(consolidateList)
+   
+    for (var hazmat in consolidateList){
+      
+      var hazmat = consolidateList[hazmat]
+      console.log(hazmat)
+      var boxCount=0;
+        for (var batch in hazmat){
+          boxCount+=hazmat[batch].fullBoxes
+          console.log(hazmat[batch])
+          if (hazmat[batch].partialBoxVol!=0||null||undefined){
+            boxCount+=1
+          }
+        }
+        console.log(boxCount)
+        boxTotals+${hazmat}=boxCount;
+      }
+   console.log(boxTotals)
 
     //overpack dictionary 
-    var overpack = {}
+    var overpackDims = {}
     overpack['4x1'] = {
       large: 27,
       medium: 18,
@@ -161,42 +210,7 @@ $(document).ready(function () {
       medium: 12,
       small: 8
     }
-    //creates the new match object
-    function Match(hazmat, boxDims, fullBoxCount) {
-      this.hazmat = hazmat,
-        this.boxDims = boxDims,
-        this.fullBoxCount = fullBoxCount
-    };
-    var matches = [];
-    //checks if user entered a destination
-    if (shipment == undefined)
-      alert("Enter a Destination First!")
-    //checks if user entered an order
-    else if (shipment.batches === undefined) {
-      alert("Please enter an order first!")
-    } else {
-      //gets the number of batches going to this location
-      var numOfBatches = shipment.batches.length - 1;
-      //loops to compare the batches to each other 
-
-      function filter(property,numOfBatches){
-        for (var i = 0; i<numOfBatches; i++){
-          for (var j = 0; j<numOfBatches; j++){
-            if((i!=j)&&(i<=j)) {
-              console.log(property)
-            }
-          }
-        }
-      }
-      filter([shipment.batches],numOfBatches)
-        // matches.push(new Match(
-        //   shipment.batches[i].hazmat,
-        //   shipment.batches[i].boxChoice,
-        //   totalBoxes
-        // ))
-      
-      
-    }
+    
   })
 })
 
