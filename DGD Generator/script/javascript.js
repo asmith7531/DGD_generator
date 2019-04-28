@@ -159,35 +159,46 @@ $(document).ready(function () {
     });
     console.log(groupsDGD)
 
-    var boxTotals = {
-      '4x1':0,
-      '4x4':0,
-      '2x10':0,
-      '6x1':0
-    }
+    var boxTotals = []
 
     const consolidateList = _.groupBy(orderList, function(orderList) {
       return `${orderList.boxChoice}`;
     });
     console.log(consolidateList)
    
-    for (var hazmat in consolidateList){
+    for (var box in consolidateList){
+      var hazmat=consolidateList[box]
       
-      var hazmat = consolidateList[hazmat]
-      console.log(hazmat)
+      var box=box
       var boxCount=0;
-        for (var batch in hazmat){
+        for (var batch in consolidateList[box]){
           boxCount+=hazmat[batch].fullBoxes
-          console.log(hazmat[batch])
+          // console.log(hazmat[batch])
           if (hazmat[batch].partialBoxVol!=0||null||undefined){
             boxCount+=1
           }
         }
-        console.log(boxCount)
-        boxTotals+${hazmat}=boxCount;
+       
+        boxTotals[box]=(boxCount);
       }
-   console.log(boxTotals)
-
+  
+   var overpackList = {};
+   for(var i in boxTotals){
+   console.log(i)
+      switch (i){
+        
+        case "4x1":
+        console.log(boxTotals)
+          while (boxTotals[i]>0){
+            if (boxTotals[i]>27){
+              overpackList.large+=1;
+              boxTotals[i]-27
+          }
+          else if(boxTotals[i])
+        }
+      }
+    }
+console.log(overpackList)
     //overpack dictionary 
     var overpackDims = {}
     overpack['4x1'] = {
@@ -210,8 +221,6 @@ $(document).ready(function () {
       medium: 12,
       small: 8
     }
-    
   })
 })
-
 
