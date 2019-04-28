@@ -442,3 +442,7 @@ textarea.input2 + .focus-input2::after {
   }
 }
 
+.table{
+  background: #adadad;
+  opacity: 0.8;
+}

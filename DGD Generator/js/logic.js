@@ -10,7 +10,7 @@ $(document).ready(function () {
   
     }
     var shipment;
-    $(".addNewLocationBtn").click(function addLocation() {
+    $("#addNewLocationBtn").click(function addLocation() {
       shipment = new Location();
       console.log(shipment)
     })
@@ -28,9 +28,9 @@ $(document).ready(function () {
     //submit button function and click event, 
     $(".addBatchBtn").click(function addBatch() {
     
-      if (shipment === undefined) {
-        alert("Please enter a Destination first!")
-      }
+      // if (shipment === undefined) {
+      //   alert("Please enter a Destination first!")
+      // }
   
       i++
       // console.log(i)
