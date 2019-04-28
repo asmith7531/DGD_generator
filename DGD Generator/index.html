@@ -1,222 +1,175 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en">
+<head>
+	<title>Contact V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
 
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>DGD Generator</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-      crossorigin="anonymous"
-    />
-    <link href="styles/dist/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat|Overpass"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
+	<div class="bg-contact2" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-contact2">
+			<div class="wrap-contact2">
+				<form class="contact2-form ">
+					<span class="contact2-form-title">
+						Recipient  Address
+					</span>
 
-  <body>
-    <div class="jumbotron">
-      <h1 class="display-3 title">Dangerous Goods Document Generator</h1>
-      <p class="lead"></p>
-      <hr class="my-2" />
-      <p>
-       
-      </p>
-      <p class="lead"></p>
-      </div>
-   <div class="container">
-    <div class="container"
-      <div class="row">
-        <div class=" add">
-              <div class="form-group">
-                  <label for=""></label>
-                  <small id="helpId" class="form-text text">Date:</small>
-                  <input
-                    type="date"
-                    class="form-control form-control-sm date"
-                    name=""
-                    id=""
-                    aria-describedby="helpId"
-                    placeholder=""
-                  />
-                </div>
-                
-                <hr>
-                <h4 class="text">Country:</h4>
-                <div class="bfh-selectbox bfh-countries text country" data-country="US" data-flags="true">
-                </div>
-             
-                
-                <hr>
-              
-                <div class=i"form-group">
-                  <label for=""></label>
-                  <small id="helpId" class="form-text text ">Address Line 1:</small>
-                  <input
-                  type="text"
-                  class="form-control form-control-sm address1"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder="Address Line 1"
-                  />
-                </div>
-                
-                <div class="form-group">
-                  <label for=""></label>
-                  <small id="helpId" class="form-text text ">Address Line 2:</small>
-                  <input
-                  type="text"
-                  class="form-control form-control-sm address2"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder="Address Line 2"
-                  />
-                </div>
-            
-                <hr>
-                <div class="form-group">
-                  <label for=""></label>
-                  <small id="helpId" class="form-text text ">City:</small>
-                  <input
-                  type="text"
-                  class="form-control form-control-sm city"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                  />
-                </div>
-                <hr>
-                <div class="form-group">
-                  <label for=""></label>
-                  <small id="helpId" class="form-text text "
-                  >State/Region/Province:</small
-                  >
-                  <input
-                  type="text"
-                  class="form-control form-control-sm region"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                  />
-                </div>
-                <button type="button" class="btn btn-danger addNewLocationBtn">New Shipment</button>
-              </div>
+					<div class="wrap-input2" data-validate="Name is required">
+						<input class="input2 date" type="Date" >
+						<span class="focus-input2" data-placeholder=""></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input2 country" type="text">
+						<span class="focus-input2" data-placeholder="Country"></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2 address1" type="text" >
+						<span class="focus-input2" data-placeholder="Address 1"></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2 address2" type="text" name="Address 2">
+						<span class="focus-input2" data-placeholder="Address 2"></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2 city" type="text" name="city">
+						<span class="focus-input2" data-placeholder="City"></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2 region" type="text" name="Region">
+						<span class="focus-input2" data-placeholder="State/Province/Region"></span>
+					</div>
+					<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn"></div>
+							<button class="contact2-form-btn" type="button" id="addNewLocationBtn">
+								Add Destination
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="wrap-contact2">
+					<form class="contact2-form validate-form">
+						<span class="contact2-form-title">
+							Enter an Order
+						</span>
+	
+						<div class="wrap-input2 validate-input" data-validate="Name is required">
+							<input class="input2 po" type="number" name="po">
+							<span class="focus-input2" data-placeholder="Order Number"></span>
+						</div>
+						<div class="wrap-input2 validate-input" data-validate = "">
+							<input class="input2 batchNum" type="text" >
+							<span class="focus-input2" data-placeholder="Lot Number"></span>
+						</div>
+						<div class="wrap-input2 validate-input" data-validate="Name is required">
+							<input class="number bottles" type="text" >
+							<span class="focus-input2" data-placeholder="Bottles"></span>
+						</div>
+						
+						<small class="boxSize text">Box Size:</small>
+						<select class="form-control" id="boxOption">
+							<option>4x1</option>
+							<option>4x4</option>
+							<option>2x10</option>
+							<option>6x1</option>
+						</select>
 
-          <div class="form-group batchForm col-lg-4">
-            <div class="form-group">
-              <label for=""></label>
-              <small id="helpId" class="form-text text">PO#:</small>
-              <input
-                type="tel"
-                class="form-control form-control-sm po"
-                maxlength="8"
-                name=""
-                id=""
-                aria-describedby="helpId"
-                placeholder="PO#"
-              />
-                  </div>
-            <div class="">
-              <label for=""></label>
-              <small id="helpId" class="form-text text batchNumTitle">Batch Number:</small>
-              <input
-              type="text"
-              class="form-control form-control-sm batchNum "
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder="Batch Number"
-              />
-              
-              
-              <small id="helpId" class="form-text text bottlesTitle">Number of Bottles:</small>
-              <input
-              type="number"
-              maxlength="3"
-              class="form-control form-control-sm bottles"
-              name=""
-              id=""
-              aria-describedby="helpId"
-              placeholder="Number of Bottles"
-              />
-              
-              
-              <small class="boxSize text">Box Size:</small>
-              <select class="form-control" id="boxOption">
-                <option>4x1</option>
-                <option>4x4</option>
-                <option>2x10</option>
-                <option>6x1</option>
-              </select>
-              
-              
-              <small class="text">Hazardous Material:</small>
-              <select class="form-control hazmat">
-                <option>2-Methoxy-1-methylethyl acetate</option>
-                <option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
-                <option>Tetramethylammonium hydroxide</option>
-                <option>Dibutyl Ethers</option>
-              </select>
-              <button type="button" class="btn btn-danger addBatchBtn">Add Batch</button>
-              <button type="button" class="btn btn-danger overpack">Overpack</button>
-          </div>
-              </div>
-              </div>
-              </div>
-              </div>
-              </div>
+						<small class="text">Hazardous Material:</small>
+						<select class="form-control hazmat">
+							<option>2-Methoxy-1-methylethyl acetate</option>
+							<option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
+							<option>Tetramethylammonium hydroxide</option>
+							<option>Dibutyl Ethers</option>
+						</select>
+	
+						<div class="container-contact2-form-btn">
+							<div class="wrap-contact2-form-btn">
+								<div class="contact2-form-bgbtn"></div>
+								<button class="contact2-form-btn addBatchBtn" type="button">
+									Add Line Item
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="container-contact2-form-btn">
+					<div class="wrap-contact2-form-btn">
+						<div class="contact2-form-bgbtn"></div>
+						<button class="contact2-form-btn overpack" id="overpackBtn" type="button">
+							OVERPACK</button>
+							<!--Table-->
+							<div class="output">
+							</div>
+									
+					
+									
+								</div>
+							</div>
+		<table id="tablePreview" class="table table-hover">
+				<!--Table head-->
+				  <thead>
+					<tr>
+					  <th>Order Number</th>
+					  <th>Batch</th>
+					  <th>Hazmat</th>
+					  <th>Box Size</th>
+					  <th>Box Vol (L)</th>
+					  <th>Full Box Count</th>
+					  <th>Partial Box Vol (L)</th>
+					  
+					</tr>
+				  </thead>
+				  <!--Table head-->
+				  <!--Table body-->
+				  <tbody id="output">
+					
+				  </tbody>
+				  <!--Table body-->
+				</table>
+				<!--Table-->
+			</div>
+		</div>
 
-        <div id="" class="output">
-          <table class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">Order</th>
-                <th scope="col">Batch</th>
-                <th scope="col">Hazmat</th>
-                <th scope="col">Box Size</th>
-                <th scope="col">Box Vol (L)</th>
-                <th scope="col">Full Boxes</th>
-                <th scope="col">Partial Box Vol (L)</th>
-              </tr>
-            </thead>
-            <tbody id="output">
-             <tr></tr>
-            </tbody>
-          </table>
-        </div>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-   
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		
 
-    <script src="styles/dist/js/bootstrap-formhelpers.js"></script>
-    <script src="script/javascript.js"></script>
-  </body>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="js/logic.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+
+</body>
 </html>
