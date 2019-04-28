@@ -9,7 +9,7 @@ $(document).ready(function () {
     orders = [];
   }
   var shipment;
-  $("#addNewLocationBtn").click(function addLocation() {
+  $(".addNewLocationBtn").click(function addLocation() {
     shipment = new Location();
     // console.log(shipment)
   })
@@ -224,6 +224,3 @@ console.log(overpackList)
   })
 })
 
-
-  
-  
