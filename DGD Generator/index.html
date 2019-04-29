@@ -1,46 +1,56 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>DGD Creator</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/logoFullTransparent.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
-<body>
 
-	<div class="bg-contact2" style="background-image: url('images/bg-01.jpg');">
+<body>
+	<video autoplay muted loop id="myVideo">
+		<source src="images\190111_09_BangkokPort_Drone_18.mp4" type="video/mp4">
+	</video>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar ">
+		<a class="navbar-brand" href="#">
+			<div class="logo"><img src="images/logoFullTransparent.png" height="60" class="d-inline-block align-top"
+					alt="mdb logo"></div>
+		</a>
+		<h1>Dangerous Goods Document Utility</h1>
+	</nav>
+	<div class="bg-contact2">
 		<div class="container-contact2">
-			<div class="wrap-contact2">
+			<div class="wrap-contact2 col-lg-3">
 				<form class="contact2-form ">
 					<span class="contact2-form-title">
-						Recipient  Address
+						Destination
 					</span>
-
 					<div class="wrap-input2" data-validate="Name is required">
-						<input class="input2 date" type="Date" >
+						<input class="input2 date" type="Date">
 						<span class="focus-input2" data-placeholder=""></span>
 					</div>
-					<div class="wrap-input2 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input2 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input2 country" type="text">
 						<span class="focus-input2" data-placeholder="Country"></span>
 					</div>
 					<div class="wrap-input2 validate-input" data-validate="Name is required">
-						<input class="input2 address1" type="text" >
+						<input class="input2 address1" type="text">
 						<span class="focus-input2" data-placeholder="Address 1"></span>
 					</div>
 					<div class="wrap-input2 validate-input" data-validate="Name is required">
@@ -65,151 +75,154 @@
 					</div>
 				</form>
 			</div>
-			<div class="wrap-contact2">
-					<form class="contact2-form validate-form">
-						<span class="contact2-form-title">
-							Enter an Order
-						</span>
-	
-						<div class="wrap-input2 validate-input" data-validate="Name is required">
-							<input class="input2 po" type="number" name="po">
-							<span class="focus-input2" data-placeholder="Order Number"></span>
+			<div class="wrap-contact2 col-lg-3">
+				<form class="contact2-form validate-form">
+					<span class="contact2-form-title">
+						Order Entry
+					</span>
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2 po" type="number" name="po">
+						<span class="focus-input2" data-placeholder="Order Number"></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate="">
+						<input class="input2 batchNum" type="text">
+						<span class="focus-input2" data-placeholder="Lot Number"></span>
+					</div>
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="number input2 bottles" type="text">
+						<span class="focus-input2" data-placeholder="Bottles"></span>
+					</div>
+					<small class="boxSize text">Box Size:</small>
+					<select class="form-control" id="boxOption">
+						<option>4x1</option>
+						<option>4x4</option>
+						<option>2x10</option>
+						<option>6x1</option>
+					</select>
+					<small class="text">Hazardous Material:</small>
+					<select class="form-control hazmat">
+						<option>2-Methoxy-1-methylethyl acetate</option>
+						<option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
+						<option>Tetramethylammonium hydroxide</option>
+						<option>Dibutyl Ethers</option>
+					</select>
+					<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn"></div>
+							<button class="contact2-form-btn addBatchBtn" type="button">
+								Add Item
+							</button>
 						</div>
-						<div class="wrap-input2 validate-input" data-validate = "">
-							<input class="input2 batchNum" type="text" >
-							<span class="focus-input2" data-placeholder="Lot Number"></span>
-						</div>
-						<div class="wrap-input2 validate-input" data-validate="Name is required">
-							<input class="number bottles" type="text" >
-							<span class="focus-input2" data-placeholder="Bottles"></span>
-						</div>
-						
-						<small class="boxSize text">Box Size:</small>
-						<select class="form-control" id="boxOption">
-							<option>4x1</option>
-							<option>4x4</option>
-							<option>2x10</option>
-							<option>6x1</option>
-						</select>
-
-						<small class="text">Hazardous Material:</small>
-						<select class="form-control hazmat">
-							<option>2-Methoxy-1-methylethyl acetate</option>
-							<option>2-Methoxy-1-methylethyl acetate, 1-methoxy-2-propanol</option>
-							<option>Tetramethylammonium hydroxide</option>
-							<option>Dibutyl Ethers</option>
-						</select>
-	
-						<div class="container-contact2-form-btn">
-							<div class="wrap-contact2-form-btn">
-								<div class="contact2-form-bgbtn"></div>
-								<button class="contact2-form-btn addBatchBtn" type="button">
-									Add Line Item
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="container-contact2-form-btn">
-					<div class="wrap-contact2-form-btn">
-						<div class="contact2-form-bgbtn"></div>
-						<button class="contact2-form-btn overpack" id="overpackBtn" type="button">
-							OVERPACK</button>
-							<!--Table-->
-							<div class="output">
-							</div>
-									
-					
-									
-								</div>
-							</div>
-		<table id="tablePreview" class="table table-hover">
-				<!--Table head-->
-				  <thead>
-					<tr>
-					  <th>Order Number</th>
-					  <th>Batch</th>
-					  <th>Hazmat</th>
-					  <th>Box Size</th>
-					  <th>Box Vol (L)</th>
-					  <th>Full Box Count</th>
-					  <th>Partial Box Vol (L)</th>
-					  
-					</tr>
-				  </thead>
-				  <!--Table head-->
-				  <!--Table body-->
-				  <tbody id="output">
-					
-				  </tbody>
-				  <!--Table body-->
-				</table>
-				<!--Table-->
-				<div id="table2">
+					</div>
+				</form>
+			</div>
+			<div class="stuff">
+			<!--Table-->
+			<div id="table2">
 				<table id="tablePreview" class="table table-hover">
 					<!--Table head-->
-					  <thead>
+					<thead>
 						<tr>
-						  <th>Large</th>
-						  <th>Medium</th>
-						  <th>Small</th>
-						  <th>IOP</th>
+							<th>Large</th>
+							<th>Medium</th>
+							<th>Small</th>
+							<th>IOP</th>
 						</tr>
-					  </thead>
-					  <!--Table head-->
-					  <!--Table body-->
-					  <tbody id="overpackOutput">
+					</thead>
+					<!--Table head-->
+					<!--Table body-->
+					<tbody id="overpackOutput">
+					</tbody>
+					<!--Table body-->
+				</table>
+				<div>
+				<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn overpackit"></div>
+								<button class="contact2-form-btn overpack" id="overpackBtn" type="button">
+									Overpack This</button>
+							</div>
+						</div>
 						
-					  </tbody>
-					  <!--Table body-->
-					</table>
-					<table id="tablePreview" class="table table-hover">
-						<!--Table head-->
-						  <thead>
-							<tr>
-							  <th>4x1</th>
-							  <th>4x4</th>
-							  <th>2x10</th>
-							  <th>6x1</th>
-							 
-							  
-							</tr>
-						  </thead>
-						  <!--Table head-->
-						  <!--Table body-->
-						  <tbody id="boxOutput">
-							
-						  </tbody>
-						  <!--Table body-->
-						</table>
 					</div>
+				<table id="tablePreview" class="table table-hover">
+					<!--Table head-->
+					<thead>
+						<tr>
+							<th>4x1</th>
+							<th>4x4</th>
+							<th>2x10</th>
+							<th>6x1</th>
+						</tr>
+					</thead>
+					<!--Table head-->
+					<!--Table body-->
+					<tbody id="boxOutput">
+					</tbody>
+					<!--Table body-->
+				</table>
+			</div>
+			<!--Table-->
+			<div class="output">
 			</div>
 		</div>
+		<table id="tablePreview" class="table table-hover">
+			<!--Table head-->
+			<thead>
+				<tr>
+					<th>Order Number</th>
+					<th>Batch</th>
+					<th>Hazmat</th>
+					<th>Box Size</th>
+					<th>Box Vol (L)</th>
+					<th>Full Box Count</th>
+					<th>Partial Box Vol (L)</th>
+				</tr>
+			</thead>
+			<!--Table head-->
+			<!--Table body-->
+			<tbody id="output">
 
-		
-
-
-<!--===============================================================================================-->
+			</tbody>
+			<!--Table body-->
+		</table>
+	</div>
+	</div>
+	<script>
+		// Get the video
+		var video = document.getElementById("myVideo");
+		// Get the button
+		var btn = document.getElementById("myBtn");
+		// Pause and play the video, and change the button text
+		function myFunction() {
+			if (video.paused) {
+				video.play();
+				btn.innerHTML = "Pause";
+			} else {
+				video.pause();
+				btn.innerHTML = "Play";
+			}
+		}
+	</script>
+	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
-<!--===============================================================================================-->
-
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="js/logic.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-23581568-13');
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'UA-23581568-13');
 	</script>
-
 </body>
 </html>

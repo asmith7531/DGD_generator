@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  
   const Location = function () {
     this.date = $(".date").val();
     //this.country=(".country").val(); ///// country will not give me the value need to figure out why
@@ -20,7 +19,6 @@ $(document).ready(function () {
   $("#addNewLocationBtn").click(function addLocation() {
     shipment = new Location();
     // console.log(shipment)
-    alert("Destination Added!")
   })
   //iterator
   var i = 0;
@@ -28,52 +26,40 @@ $(document).ready(function () {
   // console.log(i)
   //submit button function and click event, 
   $(".addBatchBtn").click(function addBatch() {
-
     if (shipment === undefined) {
       alert("Please enter a Destination first!")
     }
-
     i++
     // console.log(i)
     //creates an object for the current batch
     orders[i] = new Batch()
     shipment.orders = orders;
     // console.log(shipment)
-
     //declaring the var box to equal the box type selected index of the drop down
     let box = document.getElementById("boxOption").selectedIndex;
-
     //sets our variable "bottles" equal to the user input for the number of bottles
     let bottles = $(".bottles").val();
-
     //declaring our variable that will hold the number of full boxes of this lot number, this will be reassigned later after we calculate it by dividing bottles by box type
     let fullBoxes = 0;
-
     //array that contains the different box types to relate the input index to a string
     const boxOptions = ["4x1", "4x4", "2x10", "6x1"]
-
     //arrays containing the possible partial box volumes for boxes, the index is in order to correspond to the number of remaining bottles (thats why [0] is an empty string)
     var boxvolume4x1 = ["", 3.785, 7.57, 11.355, 15.14]
     var boxvolume4x4 = ["", 4, 8, 12, 16]
     var boxvolume2x10 = ["", 10, 20]
     var boxvolume6x1 = ["", 1, 2, 3, 4, 5, 6]
-
     //declares partial box value to be set after the below logic runs but I need it to be available in this scope
     var partialBoxVol = 0;
-
     var boxChoice = boxOptions[box]
     //declares an arbitrary box volume variable that will be reassigned later 
     let fullBoxVolume = 0;
-
     shipment.orders[i].boxChoice = boxChoice;
-
     //this is the logic that determines how many full boxes we have and how many bottles are in the remaining partial box (there is one of these conditionals that follow similar logic for each of the different sizes of box)
     if (boxChoice === ("4x1")) {
       //divides the total number of bottles in the order by the number of bottles per box and rounds down 
       shipment.orders[i].fullBoxes = Math.floor(bottles / 4);
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 4;
-
       //if a remainder exists this code will run 
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume4x1[remainingBottles];
@@ -86,7 +72,6 @@ $(document).ready(function () {
       shipment.orders[i].fullBoxes = Math.floor(bottles / 4);
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 4;
-
       //if a remainder exists this code will run 
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume4x4[remainingBottles];
@@ -99,7 +84,6 @@ $(document).ready(function () {
       shipment.orders[i].fullBoxes = Math.floor(bottles / 2);
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 2;
-
       //if a remainder exists this code will run 
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume2x10[remainingBottles];
@@ -112,7 +96,6 @@ $(document).ready(function () {
       shipment.orders[i].fullBoxes = Math.floor(bottles / 6);
       //sets a variable equal to the remainder
       var remainingBottles = bottles % 6;
-
       //if a remainder exists this code will run 
       if (remainingBottles != 0) {
         partialBoxVol = boxvolume6x1[remainingBottles];
@@ -121,12 +104,8 @@ $(document).ready(function () {
       }
       shipment.orders[i].fullBoxVolume = 6;
     }
-
-    ///////////////////////////////////////////
-
     //defines new table row
     var newtr = $("<tr>")
-
     //function to add variable info to the table passing the variable in as a parameter
     function newHTML(text) {
       //defines new html element
@@ -134,7 +113,6 @@ $(document).ready(function () {
       newtd.text(text);
       newtr.append(newtd);
     }
-
     newHTML(shipment.orders[i].po)
     newHTML(shipment.orders[i].batchNum)
     newHTML(shipment.orders[i].hazmat)
@@ -144,40 +122,30 @@ $(document).ready(function () {
     newHTML(shipment.orders[i].partialBoxVol)
     $("#output").append(newtr)
   })
-  ///////////////////////////////////////////////
-
   //overpack function which runs once our overpack button is clicked
   $(".overpack").click(function overpack() {
-
     //pushing the orders to a separate list to make them easier to work with using the Lodash library
     const orderList = [];
     for (var i = 1; i < shipment.orders.length; i++) {
       orderList.push(shipment.orders[i])
     }
-
     //groups the orders by hazmat, box dims, batch
     const groupsDGD = _.groupBy(orderList, function (orderList) {
       return `${orderList.hazmat}-${orderList.fullBoxVolume}-${orderList.batchNum}`;
     });
-    console.log(groupsDGD)
-
-    var boxTotals ={
-      
-        '4x1':0,
-        '4x4':0,
-        "2x10":0,
-        "6x1":0,
-      
+    // console.log(groupsDGD)
+    var boxTotals = {
+      '4x1': 0,
+      '4x4': 0,
+      "2x10": 0,
+      "6x1": 0,
     }
-
     const consolidateList = _.groupBy(orderList, function (orderList) {
       return `${orderList.boxChoice}`;
     });
-    console.log(consolidateList)
-
+    // console.log(consolidateList)
     for (var box in consolidateList) {
       var hazmat = consolidateList[box]
-
       var box = box
       var boxCount = 0;
       for (var batch in consolidateList[box]) {
@@ -187,10 +155,8 @@ $(document).ready(function () {
           boxCount += 1
         }
       }
-
       boxTotals[box] = (boxCount);
     }
-
     //overpack dictionary 
     var overpackDims = {
       overpack4x1: {
@@ -214,101 +180,98 @@ $(document).ready(function () {
         small: 8
       }
     }
-    var overpackList={
-      large : 0,
-      medium : 0,
-      small : 0,
-      iop : 0
+    var overpackList = {
+      large: 0,
+      medium: 0,
+      small: 0,
+      iop: 0
     };
-   
     var newtr = $("<tr>")
     for (var i in boxTotals) {
       var newtd = $('<td>')
       newtd.text(boxTotals[i]);
       $("#boxOutput").append(newtr.append(newtd));
-
-
       // console.log(i)
       console.log(boxTotals)
       switch (i) {
-        
+
         case "4x1":
-        while (boxTotals[i] > 0) {
-          // console.log("hello")
-          // console.log(boxTotals[i])
-          // console.log(overpackDims.overpack4x1.large)
-          if (boxTotals[i] >= overpackDims.overpack4x1.large) {
-            
-            overpackList.large += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack4x1.large;
+          while (boxTotals[i] > 0) {
+            // console.log("hello")
             // console.log(boxTotals[i])
             // console.log(overpackDims.overpack4x1.large)
-          } else if (overpackDims.overpack4x1.small < boxTotals[i] <= overpackDims.overpack4x1.medium) {
-            
-            overpackList.medium += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack4x1.medium
-            
-          } else if (4 < boxTotals[i] <= overpackDims.overpack4x1.small) {
-            
-            overpackList.small += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack4x1.small
-            
-          } else if (boxTotals[i] > 0) {
-            
-            overpackList.iop += 1;
-            boxTotals[i]=boxTotals[i] - 1;
-            
-          }
-          break;
-        }
-        case "4x4":
-        
-        while (boxTotals[i] > 0) {
-          if (boxTotals[i] >= overpackDims.overpack4x4.large) {
-            
-            overpackList.large += 1;
-            boxTotals[i]=boxTotals[i] - 27;
-            
-          } else if (overpackDims.overpack4x4.small < boxTotals[i] <= overpackDims.overpack4x4.medium) {
-            
-            overpackList.medium += 1;
-            boxTotals[i]=boxTotals[i] - 18
-            
-          } else if (4 < boxTotals[i] <= overpackDims.overpack4x4.small) {
-            
-            overpackList.small += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack4x4.small
-            
-          } else if (boxTotals[i] > 0) {
-            
-            overpackList.iop += 1;
-            boxTotals[i]=boxTotals[i] - 1
-            
-          }
-          break;
-        }
-        case "2x10":
-        
-        while (boxTotals[i] > 0) {
-          if (boxTotals[i] >= overpackDims.overpack2x10.large) {
-            
-            overpackList.large += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack2x10.large
-            
-          } else if (overpackDims.overpack2x10.small < boxTotals[i] <= overpackDims.overpack2x10.medium) {
-            
-            overpackList.medium += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack2x10.medium
-            
-          } else if (4 < boxTotals[i] <= overpackDims.overpack2x10.small) {
-            
-            overpackList.small += 1;
-            boxTotals[i]=boxTotals[i] - overpackDims.overpack2x10.small
-            
-          } else if (boxTotals[i] > 0) {
-            
+            if (boxTotals[i] >= overpackDims.overpack4x1.large) {
+
+              overpackList.large += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack4x1.large;
+              // console.log(boxTotals[i])
+              // console.log(overpackDims.overpack4x1.large)
+            } else if (overpackDims.overpack4x1.small < boxTotals[i] <= overpackDims.overpack4x1.medium) {
+
+              overpackList.medium += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack4x1.medium
+
+            } else if (4 < boxTotals[i] <= overpackDims.overpack4x1.small) {
+
+              overpackList.small += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack4x1.small
+
+            } else if (boxTotals[i] > 0) {
+
               overpackList.iop += 1;
-              boxTotals[i]=boxTotals[i] - 1
+              boxTotals[i] = boxTotals[i] - 1;
+
+            }
+            break;
+          }
+        case "4x4":
+
+          while (boxTotals[i] > 0) {
+            if (boxTotals[i] >= overpackDims.overpack4x4.large) {
+
+              overpackList.large += 1;
+              boxTotals[i] = boxTotals[i] - 27;
+
+            } else if (overpackDims.overpack4x4.small < boxTotals[i] <= overpackDims.overpack4x4.medium) {
+
+              overpackList.medium += 1;
+              boxTotals[i] = boxTotals[i] - 18
+
+            } else if (4 < boxTotals[i] <= overpackDims.overpack4x4.small) {
+
+              overpackList.small += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack4x4.small
+
+            } else if (boxTotals[i] > 0) {
+
+              overpackList.iop += 1;
+              boxTotals[i] = boxTotals[i] - 1
+
+            }
+            break;
+          }
+        case "2x10":
+
+          while (boxTotals[i] > 0) {
+            if (boxTotals[i] >= overpackDims.overpack2x10.large) {
+
+              overpackList.large += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack2x10.large
+
+            } else if (overpackDims.overpack2x10.small < boxTotals[i] <= overpackDims.overpack2x10.medium) {
+
+              overpackList.medium += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack2x10.medium
+
+            } else if (4 < boxTotals[i] <= overpackDims.overpack2x10.small) {
+
+              overpackList.small += 1;
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack2x10.small
+
+            } else if (boxTotals[i] > 0) {
+
+              overpackList.iop += 1;
+              boxTotals[i] = boxTotals[i] - 1
 
             }
             break;
@@ -319,37 +282,33 @@ $(document).ready(function () {
 
             if (boxTotals[i] >= overpackDims.overpack6x1.large) {
               overpackList.large += 1;
-              boxTotals[i]=boxTotals[i] - overpackDims.overpack6x1.large
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack6x1.large
 
             } else if (overpackDims.overpack6x1.small < boxTotals[i] <= overpackDims.overpack6x1.medium) {
 
               overpackList.medium += 1;
-              boxTotals[i]=boxTotals[i] - overpackDims.overpack6x1.medium
+              boxTotals[i] = boxTotals[i] - overpackDims.overpack6x1.medium
 
             } else if (4 < boxTotals[i] <= overpackDims.overpack6x1.small) { //<-----------//////////////////////////////////////////// ADD THE MIN OF 6x1
 
               overpackList.small += 1;
-              boxTotals[i]=boxTotals[i] - 8
+              boxTotals[i] = boxTotals[i] - 8
 
             } else if (boxTotals[i] > 0) {
 
               overpackList.iop += 1;
-              boxTotals[i]=boxTotals[i] - 1
-
+              boxTotals[i] = boxTotals[i] - 1
             }
             break;
           }
       }
     }
-console.log(overpackList)
-var newtr = $("<tr>")
-for (var i in overpackList) {
-  var newtd = $('<td>')
-  newtd.text(overpackList[i]);
-  $("#overpackOutput").append(newtr.append(newtd));
+    console.log(overpackList)
+    var newtr = $("<tr>")
+    for (var i in overpackList) {
+      var newtd = $('<td>')
+      newtd.text(overpackList[i]);
+      $("#overpackOutput").append(newtr.append(newtd));
     }
-  
-
   })
-
 })
