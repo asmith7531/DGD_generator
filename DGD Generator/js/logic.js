@@ -9,12 +9,6 @@ $(document).ready(function () {
     orders = [];
   }
   var shipment;
-  $("#addNewLocationBtn").click(function addLocation() {
-    shipment = new Location();
-    // console.log(shipment)
-  })
-  //iterator
-  var i = 0;
   //creates an object for the current batch
   var Batch = function () {
     this.po = $(".po").val();
@@ -22,6 +16,13 @@ $(document).ready(function () {
     this.hazmat = $(".hazmat").val();
     this.bottles = $(".bottles").val();
   }
+  $("#addNewLocationBtn").click(function addLocation() {
+    shipment = new Location();
+    // console.log(shipment)
+    alert("Destination Added!")
+  })
+  //iterator
+  var i = 0;
   var orders = []
   // console.log(i)
   //submit button function and click event, 
@@ -212,74 +213,80 @@ $(document).ready(function () {
       switch (i) {
 
         case "4x1":
-          console.log(boxTotals)
-          while (boxTotals[i] > 0) {
-            if (boxTotals[i] > overpackDims.overpack4x1.large) {
-              overpackList.large += 1;
-              boxTotals[i] - overpackDims.overpack4x1.large;
-            } else if ( overpackDims.overpack4x1.small < boxTotals[i] < overpackDims.overpack4x1.medium) {
-              overpackList.large += 1;
-              boxTotals[i] - overpackDims.overpack4x1.medium
-            } else if (4 < boxTotals[i] < overpackDims.overpack4x1.small) {
-              overpackList.small += 1;
-              boxTotals[i] - overpackDims.overpack4x1.small
-            } else if (boxTotals[i] > 0) {
-              overpackList.iop += 1;
-              boxTotals[i] - 1
-            }
+        while (boxTotals[i] > 0) {
+          if (boxTotals[i] > overpackDims.overpack4x1.large) {
+            overpackList.large += 1;
+            boxTotals[i] - overpackDims.overpack4x1.large;
+          } else if ( overpackDims.overpack4x1.small < boxTotals[i] < overpackDims.overpack4x1.medium) {
+            overpackList.large += 1;
+            boxTotals[i] - overpackDims.overpack4x1.medium
+          } else if (4 < boxTotals[i] < overpackDims.overpack4x1.small) {
+            overpackList.small += 1;
+            boxTotals[i] - overpackDims.overpack4x1.small
+          } else if (boxTotals[i] > 0) {
+            overpackList.iop += 1;
+            boxTotals[i] - 1
           }
+          break;
+        }
         case "4x4":
-          console.log(boxTotals)
-          while (boxTotals[i] > 0) {
-            if (boxTotals[i] >overpackDims.overpack4x4.large ) {
-              overpackList.large += 1;
-              boxTotals[i] - 27
-            } else if (8 < boxTotals[i] < overpackDims.overpack4x4.medium) {
-              overpackList.large += 1;
-              boxTotals[i] - 18
-            } else if (4 < boxTotals[i] < overpackDims.overpack4x4.small) {
-              overpackList.small += 1;
-              boxTotals[i] - 8
-            } else if (boxTotals[i] > 0) {
-              overpackList.iop += 1;
-              boxTotals[i] - 1
-            }
+       
+        while (boxTotals[i] > 0) {
+          if (boxTotals[i] >overpackDims.overpack4x4.large ) {
+            overpackList.large += 1;
+            boxTotals[i] - 27
+          } else if (8 < boxTotals[i] < overpackDims.overpack4x4.medium) {
+            overpackList.large += 1;
+            boxTotals[i] - 18
+          } else if (4 < boxTotals[i] < overpackDims.overpack4x4.small) {
+            overpackList.small += 1;
+            boxTotals[i] - 8
+          } else if (boxTotals[i] > 0) {
+            overpackList.iop += 1;
+            boxTotals[i] - 1
           }
-        case "4x1":
-          console.log(boxTotals)
-          while (boxTotals[i] > 0) {
-            if (boxTotals[i] > 27) {
-              overpackList.large += 1;
-              boxTotals[i] - 27
-            } else if (8 < boxTotals[i] < 18) {
-              overpackList.large += 1;
-              boxTotals[i] - 18
-            } else if (4 < boxTotals[i] < 8) {
-              overpackList.small += 1;
-              boxTotals[i] - 8
-            } else if (boxTotals[i] > 0) {
-              overpackList.iop += 1;
-              boxTotals[i] - 1
-            }
+          break;
+        }
+        case "2x10":
+      
+        while (boxTotals[i] > 0) {
+          if (boxTotals[i] > 27) {
+            overpackList.large += 1;
+            boxTotals[i] - 27
+          } else if (8 < boxTotals[i] < 18) {
+            overpackList.large += 1;
+            boxTotals[i] - 18
+          } else if (4 < boxTotals[i] < 8) {
+            overpackList.small += 1;
+            boxTotals[i] - 8
+          } else if (boxTotals[i] > 0) {
+            overpackList.iop += 1;
+            boxTotals[i] - 1
           }
-        case "4x1":
-          console.log(boxTotals)
-          while (boxTotals[i] > 0) {
-            if (boxTotals[i] > 27) {
-              overpackList.large += 1;
-              boxTotals[i] - 27
-            } else if (8 < boxTotals[i] < 18) {
-              overpackList.large += 1;
-              boxTotals[i] - 18
-            } else if (4 < boxTotals[i] < 8) {
-              overpackList.small += 1;
-              boxTotals[i] - 8
-            } else if (boxTotals[i] > 0) {
-              overpackList.iop += 1;
-              boxTotals[i] - 1
-            }
+          break;
+        }
+        case "6x1":
+        
+        while (boxTotals[i] > 0) {
+          if (boxTotals[i] > 27) {
+            overpackList.large += 1;
+            boxTotals[i] - 27
+          } else if (8 < boxTotals[i] < 18) {
+            overpackList.large += 1;
+            boxTotals[i] - 18
+          } else if (4 < boxTotals[i] < 8) {
+            overpackList.small += 1;
+            boxTotals[i] - 8
+          } else if (boxTotals[i] > 0) {
+            overpackList.iop += 1;
+            boxTotals[i] - 1
           }
+          break;
+        }
       }
     }
+    console.log(boxTotals)
+    console.log(overpackList)
   })
+  
 })
