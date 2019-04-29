@@ -1,4 +1,4 @@
-$(document).ready(function () { 
+$(document).ready(function () {
   const Location = function () {
     this.date = $(".date").val();
     //this.country=(".country").val(); ///// country will not give me the value need to figure out why
@@ -105,7 +105,7 @@ $(document).ready(function () {
         // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
       shipment.orders[i].fullBoxVolume = 20;
-    }  else if (boxChoice === ("6x1")) {
+    } else if (boxChoice === ("6x1")) {
       //divides the total number of bottles in the order by the number of bottles per box and rounds down 
       shipment.orders[i].fullBoxes = Math.floor(bottles / 6);
       //sets a variable equal to the remainder
@@ -118,7 +118,7 @@ $(document).ready(function () {
         // console.log("There is one partial box with a volume of: " + partialBoxVol + " liters");
       }
       shipment.orders[i].fullBoxVolume = 6;
-    } 
+    }
 
     ///////////////////////////////////////////
 
@@ -143,87 +143,143 @@ $(document).ready(function () {
     $("#output").append(newtr)
   })
   ///////////////////////////////////////////////
-  
+
   //overpack function which runs once our overpack button is clicked
   $(".overpack").click(function overpack() {
-    
+
     //pushing the orders to a separate list to make them easier to work with using the Lodash library
     const orderList = [];
-    for (var i =1; i<shipment.orders.length; i++){
+    for (var i = 1; i < shipment.orders.length; i++) {
       orderList.push(shipment.orders[i])
     }
- 
+
     //groups the orders by hazmat, box dims, batch
-    const groupsDGD = _.groupBy(orderList, function(orderList) {
+    const groupsDGD = _.groupBy(orderList, function (orderList) {
       return `${orderList.hazmat}-${orderList.fullBoxVolume}-${orderList.batchNum}`;
     });
     console.log(groupsDGD)
 
     var boxTotals = []
 
-    const consolidateList = _.groupBy(orderList, function(orderList) {
+    const consolidateList = _.groupBy(orderList, function (orderList) {
       return `${orderList.boxChoice}`;
     });
     console.log(consolidateList)
-   
-    for (var box in consolidateList){
-      var hazmat=consolidateList[box]
+    
+    for (var box in consolidateList) {
+      var hazmat = consolidateList[box]
       
-      var box=box
-      var boxCount=0;
-        for (var batch in consolidateList[box]){
-          boxCount+=hazmat[batch].fullBoxes
-          // console.log(hazmat[batch])
-          if (hazmat[batch].partialBoxVol!=0||null||undefined){
-            boxCount+=1
-          }
-        }
-       
-        boxTotals[box]=(boxCount);
-      }
-  
-   var overpackList = {};
-   for(var i in boxTotals){
-   console.log(i)
-      switch (i){
-        
-        case "4x1":
-        console.log(boxTotals)
-          while (boxTotals[i]>0){
-            if (boxTotals[i]>27){
-              overpackList.large+=1;
-              boxTotals[i]-27
-          }
-          else if(boxTotals[i])
+      var box = box
+      var boxCount = 0;
+      for (var batch in consolidateList[box]) {
+        boxCount += hazmat[batch].fullBoxes
+        // console.log(hazmat[batch])
+        if (hazmat[batch].partialBoxVol != 0 || null || undefined) {
+          boxCount += 1
         }
       }
+      
+      boxTotals[box] = (boxCount);
     }
-console.log(overpackList)
+    
+    console.log(overpackList)
     //overpack dictionary 
-    var overpackDims = {}
-    overpack['4x1'] = {
-      large: 27,
-      medium: 18,
-      small: 8
+    var overpackDims = {
+      overpack4x1: {
+        large: 27,
+        medium: 18,
+        small: 8
+      },
+      overpack4x4: {
+        large: 18,
+        medium: 12,
+        small: 8
+      },
+      overpack2x10: {
+        large: 18,
+        medium: 12,
+        small: 8
+      },
+      overpack6x1: {
+        large: 18,
+        medium: 12,
+        small: 8
+      }
     }
-    overpack['4x4'] = {
-      large: 18,
-      medium: 12,
-      small: 8
-    }
-    overpack['2x10'] = {
-      large: 18,
-      medium: 12,
-      small: 8
-    }
-    overpack['6x1'] = {
-      large: 18,
-      medium: 12,
-      small: 8
+    var overpackList = {};
+    for (var i in boxTotals) {
+      console.log(i)
+      switch (i) {
+
+        case "4x1":
+          console.log(boxTotals)
+          while (boxTotals[i] > 0) {
+            if (boxTotals[i] > overpackDims.overpack4x1.large) {
+              overpackList.large += 1;
+              boxTotals[i] - overpackDims.overpack4x1.large;
+            } else if ( overpackDims.overpack4x1.small < boxTotals[i] < overpackDims.overpack4x1.medium) {
+              overpackList.large += 1;
+              boxTotals[i] - overpackDims.overpack4x1.medium
+            } else if (4 < boxTotals[i] < overpackDims.overpack4x1.small) {
+              overpackList.small += 1;
+              boxTotals[i] - overpackDims.overpack4x1.small
+            } else if (boxTotals[i] > 0) {
+              overpackList.iop += 1;
+              boxTotals[i] - 1
+            }
+          }
+        case "4x4":
+          console.log(boxTotals)
+          while (boxTotals[i] > 0) {
+            if (boxTotals[i] >overpackDims.overpack4x4.large ) {
+              overpackList.large += 1;
+              boxTotals[i] - 27
+            } else if (8 < boxTotals[i] < overpackDims.overpack4x4.medium) {
+              overpackList.large += 1;
+              boxTotals[i] - 18
+            } else if (4 < boxTotals[i] < overpackDims.overpack4x4.small) {
+              overpackList.small += 1;
+              boxTotals[i] - 8
+            } else if (boxTotals[i] > 0) {
+              overpackList.iop += 1;
+              boxTotals[i] - 1
+            }
+          }
+        case "4x1":
+          console.log(boxTotals)
+          while (boxTotals[i] > 0) {
+            if (boxTotals[i] > 27) {
+              overpackList.large += 1;
+              boxTotals[i] - 27
+            } else if (8 < boxTotals[i] < 18) {
+              overpackList.large += 1;
+              boxTotals[i] - 18
+            } else if (4 < boxTotals[i] < 8) {
+              overpackList.small += 1;
+              boxTotals[i] - 8
+            } else if (boxTotals[i] > 0) {
+              overpackList.iop += 1;
+              boxTotals[i] - 1
+            }
+          }
+        case "4x1":
+          console.log(boxTotals)
+          while (boxTotals[i] > 0) {
+            if (boxTotals[i] > 27) {
+              overpackList.large += 1;
+              boxTotals[i] - 27
+            } else if (8 < boxTotals[i] < 18) {
+              overpackList.large += 1;
+              boxTotals[i] - 18
+            } else if (4 < boxTotals[i] < 8) {
+              overpackList.small += 1;
+              boxTotals[i] - 8
+            } else if (boxTotals[i] > 0) {
+              overpackList.iop += 1;
+              boxTotals[i] - 1
+            }
+          }
+      }
     }
   })
 })
-
-
-  
-  
