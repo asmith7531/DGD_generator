@@ -153,11 +153,9 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: rgba(219,21,99,0.8);
-  background: -webkit-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
-  background: -o-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
-  background: -moz-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
-  background: linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: rgba(21, 74, 219, 0.8);
+  background: -webkit-linear-gradient(45deg, rgba(0, 39, 213, 0.8), rgba(53, 179, 229, 0.644));
+ 
 }
 
 .wrap-contact2 {
@@ -307,6 +305,7 @@ textarea.input2 + .focus-input2::after {
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 13px;
+  margin: 3%
 }
 
 .wrap-contact2-form-btn {
@@ -445,4 +444,10 @@ textarea.input2 + .focus-input2::after {
 .table{
   background: #adadad;
   opacity: 0.8;
+}
+
+#table2{
+  justify-content: space-between;
+  display: -webkit-flex
+  
 }
